@@ -1,32 +1,33 @@
 import React from "react"
+import { Link } from "gatsby"
 
 const Navbar = () => (
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">
+  <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
+    <ul className="navbar-nav">
+      <li className="nav-item active">
+        <Link className="nav-link" to="/">
           Home
-        </a>
+        </Link>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
+      <li className="nav-item">
+        <Link className="nav-link" to="/stockpage">
           Top 500 Stocks
-        </a>
+        </Link>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
+      <li className="nav-item">
+        <Link className="nav-link" to="/newslanding">
           News
-        </a>
+        </Link>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          Company Info
-        </a>
+      <li className="nav-item">
+        <Link className="nav-link" to="/industrylanding">
+          Industry Info
+        </Link>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
+      <li className="nav-item">
+        <Link className="nav-link" to="/aboutpage">
           About Us
-        </a>
+        </Link>
       </li>
     </ul>
   </nav>
