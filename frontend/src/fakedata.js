@@ -115,4 +115,4 @@ const News = [
   },
 ]
 
-export { StockData, IndustryData, News }
+module.exports = { StockData, IndustryData, News }
