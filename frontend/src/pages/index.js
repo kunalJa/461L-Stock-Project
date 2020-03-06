@@ -1,64 +1,72 @@
 import React from "react"
-import Navbar from "../components/Navbar"
 
-const IndexPage = () => (
-  <>
-    <Navbar />
-    <div>
-      <h1 class="home" style={{ marginLeft: 15, marginTop: 15 }}>
-        Plumbing & co. Finance
-      </h1>
-    </div>
-    <img
-      src={
-        "https://ojjme2x5sm337cgpo2mhuny3-wpengine.netdna-ssl.com/wp-content/uploads/2016/01/director-of-finance-640x230.jpg"
-      }
-      alt=""
-    />
-    <br></br>
-    <div class="card-deck" style={{ padding: 15 }}>
-      <div class="card">
-        <img class="card-img-top" src="..." alt="Card image cap"></img>
-        <div class="card-body">
-          <h5 class="Top 500 Stocks">Top 500 Stocks</h5>
-          <p class="card-text">
-            Description: something like this is the S&P 500 or the top 500
-            stocks by price or whatever
-          </p>
-        </div>
-        <div class="card-footer">
-          <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
+import Navbar from "../components/Navbar"
+import Card from "../components/Card"
+
+const IndexPage = ({ data }) => {
+  const news = data.allMongodbStockInformationNews.edges
+  return (
+    <>
+      <Navbar />
+      <div>
+        <h1 class="home" style={{ marginLeft: 15, marginTop: 15 }}>
+          Plumbing & co. Finance
+        </h1>
       </div>
-      <div class="card">
-        <img class="card-img-top" src="..." alt="Card image cap"></img>
-        <div class="card-body">
-          <h5 class="card-title">Latest Stock News</h5>
-          <p class="card-text">
-            This card has supporting text below as a natural lead-in to
-            additional content.
-          </p>
-        </div>
-        <div class="card-footer">
-          <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
+      <div className="card-deck ml-3">
+        <img
+          style={{ float: "left" }}
+          src={
+            "https://ojjme2x5sm337cgpo2mhuny3-wpengine.netdna-ssl.com/wp-content/uploads/2016/01/director-of-finance-640x230.jpg"
+          }
+          alt=""
+        />
+        <h1 className="ml-5" style={{ float: "left", width: "600px" }}>
+          The stock market is doing great! Click on our navigation links (above)
+          to see information about each stock, industry, or related news!
+        </h1>
       </div>
-      <div class="card">
-        <img class="card-img-top" src="..." alt="Card image cap"></img>
-        <div class="card-body">
-          <h5 class="card-title">Company Info</h5>
-          <p class="card-text">
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This card has even longer content than the
-            first to show that equal height action.
-          </p>
-        </div>
-        <div class="card-footer">
-          <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
+      <br></br>
+      <div
+        className="card-deck mt-5"
+        style={{ paddingLeft: 15, paddingRight: 15 }}
+      >
+        {news.map(({ node }, i) => {
+          return (
+            <Card
+              title={node.article.title}
+              source_name={node.article.source_name}
+              news_url={node.article.news_url}
+              text={node.article.text}
+              image_url={node.article.image_url}
+              key={i}
+            />
+          )
+        })}
       </div>
-    </div>
-  </>
-)
+    </>
+  )
+}
 
 export default IndexPage
+
+export const newsTeslaResult = graphql`
+  query teslaNews {
+    allMongodbStockInformationNews(
+      filter: { company: { eq: "Tesla Inc." } }
+      limit: 3
+    ) {
+      edges {
+        node {
+          article {
+            source_name
+            news_url
+            image_url
+            text
+            title
+          }
+        }
+      }
+    }
+  }
+`
