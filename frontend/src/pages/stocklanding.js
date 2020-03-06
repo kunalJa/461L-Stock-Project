@@ -1,44 +1,74 @@
 import React from "react"
+import { graphql, Link } from "gatsby"
+
 import Navbar from "../components/Navbar"
 
-const Stocklanding = () => (
-  <>
-    <Navbar />
-    <div>
-      <h2 class="home">Top 500 Stocks</h2>
-    </div>
-    <br></br>
-    <table class="table table-dark">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-        </tr>
-      </tbody>
-    </table>
-  </>
-)
+const Stocklanding = ({ data }) => {
+  const stocks = data.allMongodbStockInformationInformation.edges
+  return (
+    <>
+      <Navbar />
+      <div>
+        <h2 class="home">Top Stocks: Click on a stock for more info!</h2>
+      </div>
+      <br></br>
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Sybol</th>
+            <th scope="col">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {stocks
+            .sort((a, b) => {
+              return b.node.latestPrice - a.node.latestPrice
+            })
+            .map(({ node }, i) => {
+              return (
+                <tr key={i}>
+                  <th scope="row">
+                    <Link to={`/stock/${node.symbol}`}>{i}</Link>
+                  </th>
+                  <td>
+                    <Link to={`/stock/${node.symbol}`}>{node.name}</Link>
+                  </td>
+                  <td>
+                    <Link to={`/stock/${node.symbol}`}>{node.symbol}</Link>
+                  </td>
+                  <td>
+                    <Link to={`/stock/${node.symbol}`}>{node.latestPrice}</Link>
+                  </td>
+                </tr>
+              )
+            })}
+        </tbody>
+      </table>
+      <img
+        style={{ width: "800px" }}
+        src={
+          "https://www.altran.com/as-content/uploads/sites/4/2017/05/5-0_finance_1600.jpg"
+        }
+        alt=""
+      />
+    </>
+  )
+}
 
 export default Stocklanding
+
+export const stockData = graphql`
+  query allStocks {
+    allMongodbStockInformationInformation {
+      edges {
+        node {
+          symbol
+          name
+          latestPrice
+        }
+      }
+    }
+  }
+`
