@@ -4,14 +4,14 @@ import { Link } from "gatsby"
 const Navbar = () => (
   <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
     <ul className="navbar-nav">
-      <li className="nav-item active">
+      <li className="nav-item">
         <Link className="nav-link" to="/">
           Home
         </Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to="/stockpage">
-          Top 500 Stocks
+        <Link className="nav-link" to="/stocklanding">
+          Stocks
         </Link>
       </li>
       <li className="nav-item">
@@ -21,7 +21,7 @@ const Navbar = () => (
       </li>
       <li className="nav-item">
         <Link className="nav-link" to="/industrylanding">
-          Industry Info
+          Industries
         </Link>
       </li>
       <li className="nav-item">

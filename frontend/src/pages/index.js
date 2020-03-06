@@ -6,9 +6,15 @@ const IndexPage = () => (
     <Navbar />
     <div>
       <h1 class="home" style={{ marginLeft: 15, marginTop: 15 }}>
-        Whatever we call our website
+        Plumbing & co. Finance
       </h1>
     </div>
+    <img
+      src={
+        "https://ojjme2x5sm337cgpo2mhuny3-wpengine.netdna-ssl.com/wp-content/uploads/2016/01/director-of-finance-640x230.jpg"
+      }
+      alt=""
+    />
     <br></br>
     <div class="card-deck" style={{ padding: 15 }}>
       <div class="card">

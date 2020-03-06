@@ -110,8 +110,7 @@ const News = [
     title: "I hate stocks",
     news_url: "https://www.uc.edu/",
     text: "We need more money",
-    image_url:
-      "",
+    image_url: "",
   },
 ]
 
