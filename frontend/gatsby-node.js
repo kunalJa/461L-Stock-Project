@@ -90,13 +90,26 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query')
   }
 
-  stockResult.data.allMongodbStockInformationIndustry.edges.forEach(
+  stockResult.data.allMongodbStockInformationInformation.edges.forEach(
     ({ node }) => {
       createPage({
         path: `/stock/${node.symbol}`,
         component: path.resolve(`./src/layouts/StockPage.jsx`),
         context: {
           slug: `/stock/${node.symbol}`,
+          id: `${node.id}`,
+        },
+      })
+    }
+  )
+
+  industryResult.data.allMongodbStockInformationIndustry.edges.forEach(
+    ({ node }) => {
+      createPage({
+        path: `/industry/${node.name.split(" ").join("")}`,
+        component: path.resolve(`./src/layouts/IndustryPage.jsx`),
+        context: {
+          slug: `/industry/${node.name.split(" ").join("")}`,
           id: `${node.id}`,
         },
       })
