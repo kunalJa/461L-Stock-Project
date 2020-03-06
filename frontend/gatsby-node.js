@@ -7,7 +7,7 @@ exports.createPages = ({ actions }) => {
   StockData.forEach(stock => {
     createPage({
       path: `/stock/${stock.symbol}`,
-      component: path.resolve(`./src/components/StockPage.jsx`),
+      component: path.resolve(`./src/layouts/StockPage.jsx`),
       context: {
         slug: `/stock/${stock.symbol}`,
         id: `SitePage /stock/${stock.symbol}`,
