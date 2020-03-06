@@ -90,28 +90,28 @@ const IndustryData = [
 
 const News = [
   {
-    author: "Halberg",
+    source_name: "Halberg",
     title: "The Sun never sets",
-    url: "www.bloomberg.com",
-    description: "Why Japan is a great investment.",
-    text:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sed consequat risus, non efficitur dolor. Etiam posuere sagittis mi, eu porta augue volutpat non. Sed iaculis consequat nisi, in sagittis nunc pellentesque sed. Nullam mollis turpis sed condimentum vehicula. Sed ut sem efficitur, rutrum mi quis, dictum odio. Cras ligula nibh, gravida sit amet metus at, aliquam fringilla mauris. Donec elementum viverra est vel tristique. Morbi dictum interdum arcu vehicula dignissim. Phasellus molestie maximus volutpat. Proin fringilla ac ante eu maximus.",
+    news_url: "https://www.bloomberg.com",
+    text: "Why Japan is a great investment.",
+    image_url:
+      "https://www.crystalfontz.com/images/products/CFAL12832DCW/8x8_CFAL12832D.jpg",
   },
   {
-    author: "Michael Reeji",
+    source_name: "Michael Reeji",
     title: "How to eat more Apple",
-    url: "www.apple.com",
-    description: "When to invest in Apple.",
-    text:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sed consequat risus, non efficitur dolor. Etiam posuere sagittis mi, eu porta augue volutpat non. Sed iaculis consequat nisi, in sagittis nunc pellentesque sed. Nullam mollis turpis sed condimentum vehicula. Sed ut sem efficitur, rutrum mi quis, dictum odio. Cras ligula nibh, gravida sit amet metus at, aliquam fringilla mauris. Donec elementum viverra est vel tristique. Morbi dictum interdum arcu vehicula dignissim. Phasellus molestie maximus volutpat. Proin fringilla ac ante eu maximus.",
+    news_url: "https://www.apple.com",
+    text: "When to invest in Apple.",
+    image_url:
+      "https://www.crystalfontz.com/images/products/CFAL12832DCW/8x8_CFAL12832D.jpg",
   },
   {
-    author: "Zombo Gam",
+    source_name: "Zombo Gam",
     title: "I hate stocks",
-    url: "www.zombo.com",
-    description: "We need more money",
-    text:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sed consequat risus, non efficitur dolor. Etiam posuere sagittis mi, eu porta augue volutpat non. Sed iaculis consequat nisi, in sagittis nunc pellentesque sed. Nullam mollis turpis sed condimentum vehicula. Sed ut sem efficitur, rutrum mi quis, dictum odio. Cras ligula nibh, gravida sit amet metus at, aliquam fringilla mauris. Donec elementum viverra est vel tristique. Morbi dictum interdum arcu vehicula dignissim. Phasellus molestie maximus volutpat. Proin fringilla ac ante eu maximus.",
+    news_url: "https://www.uc.edu/",
+    text: "We need more money",
+    image_url:
+      "",
   },
 ]
 
