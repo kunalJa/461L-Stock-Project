@@ -16,8 +16,9 @@ const Aboutpage = () => (
         <div class="card-body">
           <h5 class="card-title">Kunal Jain</h5>
           <p class="card-text">
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
+            <br>Bio: I'm pretty much the smart one.</br>
+            <br>Major/Track: ECE/Software Engineering</br>
+            <br>Primary responsibilites: Backend development, database management, API management</br>
           </p>
         </div>
         <div class="card-footer">
@@ -29,8 +30,10 @@ const Aboutpage = () => (
         <div class="card-body">
           <h5 class="card-title">Yulei Xu</h5>
           <p class="card-text">
-            This card has supporting text below as a natural lead-in to
-            additional content.
+            <br>Bio: Be happy with who you are. Even if no one else likes you, make sure you still like you.</br>
+            <br>Major/Track: ECE/Software Engineering</br>
+            <br>Primary responsibilites: Editor, CSS styling, frontend web design.</br>
+
           </p>
         </div>
         <div class="card-footer">
@@ -42,9 +45,9 @@ const Aboutpage = () => (
         <div class="card-body">
           <h5 class="card-title">Justin Liu</h5>
           <p class="card-text">
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This card has even longer content than the
-            first to show that equal height action.
+            <br>Bio: I'm just here doing things and stuff you know? Like stuff kind of things.</br>
+            <br>Major/Track: ECE/Software Engineering. </br>
+            <br>Primary responsibilites: Writing, CSS styling, frontend web design</br>
           </p>
         </div>
         <div class="card-footer">
@@ -58,8 +61,9 @@ const Aboutpage = () => (
         <div class="card-body">
           <h5 class="card-title">Naveen Yarlagadda</h5>
           <p class="card-text">
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
+            <br>Bio: My life goal is to one day have a mustache as glorious as my father's</br>
+            <br>Major/Track: ECE/Software Engineering</br>
+            <br>Primary responsibilites: Backend web design, database management</br>
           </p>
         </div>
         <div class="card-footer">
@@ -71,8 +75,9 @@ const Aboutpage = () => (
         <div class="card-body">
           <h5 class="card-title">Bala Balasubramanian</h5>
           <p class="card-text">
-            This card has supporting text below as a natural lead-in to
-            additional content.
+            <br>Bio: Web development sure is.....it sure is.</br>
+            <br>Major/Track: ECE/Software Engineering</br>
+            <br>Primary responsibilites: Editor, backend web design</br>
           </p>
         </div>
         <div class="card-footer">
@@ -84,9 +89,9 @@ const Aboutpage = () => (
         <div class="card-body">
           <h5 class="card-title">Jacob Poston</h5>
           <p class="card-text">
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This card has even longer content than the
-            first to show that equal height action.
+            <br>Bio: Just a kid that likes to make videos</br>
+            <br>Major/Track: ECE/Software Engineering</br>
+            <br>Primary responsibilites: Frontend structure design</br>
           </p>
         </div>
         <div class="card-footer">
