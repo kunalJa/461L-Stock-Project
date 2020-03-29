@@ -171,9 +171,7 @@ const Aboutpage = () => {
     <>
       <Navbar />
       <div>
-        <h2 className="home" style={{ marginLeft: 15, marginTop: 15 }}>
-          About Us
-        </h2>
+        <h2 className="home" style={{ marginTop: 15 }} align="center"> About Us </h2>
       </div>
       <br />
       <div className="card-group" style={{ padding: 15 }}>
