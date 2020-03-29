@@ -10,7 +10,7 @@ const Newslanding = ({ data }) => {
     <>
       <Navbar />
       <div>
-        <h2 class="home" style={{ marginLeft: 15, marginTop: 15 }}>
+        <h2 class="home" style={{ marginLeft: 15, marginTop: 15, fontWeight: 'bold'}}>
           Latest Stock News
         </h2>
       </div>
