@@ -57,6 +57,9 @@ const Aboutpage = () => {
               user(login: "${login}") {
                 avatarUrl
                 bio
+                issues {
+                  totalCount
+                }
               } 
             }`
         });
@@ -90,15 +93,18 @@ const Aboutpage = () => {
   let commitCounts = null;
   let avatars = null;
   let bio = null;
+  let issues = null;
   console.log(info);
   if (Object.keys(info.content).length) {
     commitCounts = {};
     avatars = {};
     bio = {};
+    issues = {};
     for (const key of Object.keys(info.content)) {
       commitCounts[key] = info.content[key].data.repository.object.history.totalCount
       avatars[key] = info.content[key].data.user.avatarUrl
       bio[key] = info.content[key].data.user.bio
+      issues[key] = info.content[key].data.user.issues.totalCount
     }
   }
 
@@ -109,7 +115,8 @@ const Aboutpage = () => {
       "major": "Major/Track: ECE/Software Engineering",
       "responsibilities": "Backend development, database management, API management",
       "commitCount": commitCounts ? commitCounts['kunaljain@utexas.edu'] : '',
-      "avatar": avatars ? avatars['kunaljain@utexas.edu'] : ''
+      "avatar": avatars ? avatars['kunaljain@utexas.edu'] : '',
+      "issues": issues ? issues['kunaljain@utexas.edu'] : ''
     },
     {
       "name": "Yulei Xu",
@@ -117,7 +124,8 @@ const Aboutpage = () => {
       "major": "Major/Track: ECE/Software Engineering",
       "responsibilities": "Backend development, database management, API management",
       "commitCount": commitCounts ? commitCounts['yuleixu@utexas.edu'] : '',
-      "avatar": avatars ? avatars['yuleixu@utexas.edu'] : ''
+      "avatar": avatars ? avatars['yuleixu@utexas.edu'] : '',
+      "issues": issues ? issues['yuleixu@utexas.edu'] : '',
     },
     {
       "name": "Justin Liu",
@@ -125,7 +133,8 @@ const Aboutpage = () => {
       "major": "Major/Track: ECE/Software Engineering",
       "responsibilities": "Backend development, database management, API management",
       "commitCount": commitCounts ? commitCounts['justin.jac.liu@utexas.edu'] : '',
-      "avatar": avatars ? avatars['justin.jac.liu@utexas.edu'] : ''
+      "avatar": avatars ? avatars['justin.jac.liu@utexas.edu'] : '',
+      "issues": issues ? issues['justin.jac.liu@utexas.edu'] : '',
     }
   ];
   const group2 = [
@@ -135,7 +144,8 @@ const Aboutpage = () => {
       "major": "Major/Track: ECE/Software Engineering",
       "responsibilities": "Backend development, database management, API management",
       "commitCount": commitCounts ? commitCounts['nyar99@gmail.com'] : '',
-      "avatar": avatars ? avatars['nyar99@gmail.com'] : ''
+      "avatar": avatars ? avatars['nyar99@gmail.com'] : '',
+      "issues": issues ? issues['nyar99@gmail.com'] : '',
     },
     {
       "name": "Balakumaran Balasubramanian",
@@ -143,7 +153,8 @@ const Aboutpage = () => {
       "major": "Major/Track: ECE/Software Engineering",
       "responsibilities": "Backend development, database management, API management",
       "commitCount": commitCounts ? commitCounts['balakumaran55@gmail.com'] : '',
-      "avatar": avatars ? avatars['balakumaran55@gmail.com'] : ''
+      "avatar": avatars ? avatars['balakumaran55@gmail.com'] : '',
+      "issues": issues ? issues['balakumaran55@gmail.com'] : '',
     },
     {
       "name": "Jacob Poston",
@@ -151,7 +162,8 @@ const Aboutpage = () => {
       "major": "Major/Track: ECE/Software Engineering",
       "responsibilities": "Primary responsibilites: Writing, CSS Styling, Frontend Design, Moral Support",
       "commitCount": commitCounts ? commitCounts['jacob.poston.6@gmail.com'] : '',
-      "avatar": avatars ? avatars['jacob.poston.6@gmail.com'] : ''
+      "avatar": avatars ? avatars['jacob.poston.6@gmail.com'] : '',
+      "issues": issues ? issues['jacob.poston.6@gmail.com'] : '',
     }
   ];
 
@@ -165,16 +177,16 @@ const Aboutpage = () => {
       </div>
       <br />
       <div className="card-group" style={{ padding: 15 }}>
-        {group1.map(person => <PersonCard avatar={person.avatar} name={person.name} bio={person.bio} major={person.major} responsibilities={person.responsibilities} commitCount={person.commitCount} key={person.name} />)}
+        {group1.map(person => <PersonCard avatar={person.avatar} name={person.name} bio={person.bio} major={person.major} responsibilities={person.responsibilities} commitCount={person.commitCount} issues={person.issues} key={person.name} />)}
       </div>
       <div className="card-group" style={{ padding: 15 }}>
-        {group2.map(person => <PersonCard avatar={person.avatar} name={person.name} bio={person.bio} major={person.major} responsibilities={person.responsibilities} commitCount={person.commitCount} key={person.name} />)}
+        {group2.map(person => <PersonCard avatar={person.avatar} name={person.name} bio={person.bio} major={person.major} responsibilities={person.responsibilities} commitCount={person.commitCount} issues={person.issues} key={person.name} />)}
       </div>
     </>
   );
 }
 
-const PersonCard = ({ avatar, name, bio, major, responsibilities, commitCount }) => (
+const PersonCard = ({ avatar, name, bio, major, responsibilities, commitCount, issues}) => (
   <div className="card">
     <img className="card-img-top" src={avatar} alt="Card image cap"></img>
     <div className="card-body">
@@ -183,6 +195,7 @@ const PersonCard = ({ avatar, name, bio, major, responsibilities, commitCount })
       <p>{major}</p>
       <p>{responsibilities}</p>
       <p>Commits: {commitCount}</p>
+      <p>Issues: {issues}</p>
     </div>
     <div className="card-footer">
       <small className="text-muted">Last updated 3 mins ago</small>
