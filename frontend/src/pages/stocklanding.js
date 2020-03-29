@@ -17,7 +17,7 @@ const Stocklanding = ({ data }) => {
           <tr>
             <th scope="col">#</th>
             <th scope="col">Name</th>
-            <th scope="col">Sybol</th>
+            <th scope="col">Symbol</th>
             <th scope="col">Price</th>
           </tr>
         </thead>

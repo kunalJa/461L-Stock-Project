@@ -7,7 +7,6 @@ import Navbar from "../components/Navbar"
 import Card from "../components/Card"
 
 export default function StockPage({ data }) {
-  console.log(data)
   const stock = data.mongodbStockInformationInformation
   const historicData = {}
   stock.historical[0].dates.forEach(

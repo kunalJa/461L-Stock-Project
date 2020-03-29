@@ -1,4 +1,5 @@
 import React from "react"
+import { graphql } from "gatsby"
 
 import Navbar from "../components/Navbar"
 import Card from "../components/Card"
@@ -9,7 +10,7 @@ const IndexPage = ({ data }) => {
     <>
       <Navbar />
       <div>
-        <h1 className="home" style={{ marginLeft: 15, marginTop: 15 }}>
+        <h1 class="home" style={{ marginLeft: 15, marginTop: 15 }}>
           Plumbing & co. Finance
         </h1>
       </div>
