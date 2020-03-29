@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import Navbar from "../components/Navbar"
 
 const Aboutpage = () => {
-  const [respy, setResp] = useState({ meme: {} });
+  const [info, setInfo] = useState({ content: {} });
   useEffect(() => {
     const xhr2 = new XMLHttpRequest();
     xhr2.addEventListener('load', function () {
@@ -13,13 +13,13 @@ const Aboutpage = () => {
         const xhr = new XMLHttpRequest();
         xhr.addEventListener('load', function () {
           const resp = JSON.parse(this.responseText);
-          respy.meme = {
-            ...respy.meme,
+          info.content = {
+            ...info.content,
             [email]: resp,
           };
-          setResp({
-            meme: {
-              ...respy.meme,
+          setInfo({
+            content: {
+              ...info.content,
               [email]: resp,
             }
           });
@@ -79,12 +79,12 @@ const Aboutpage = () => {
     xhr2.send(t);
   }, []);
 
-  let happy = null;
-  console.log(respy);
-  if (Object.keys(respy.meme).length) {
-    happy = {};
-    for (const key of Object.keys(respy.meme)) {
-      happy[key] = respy.meme[key].data.repository.object.history.totalCount
+  let gitData = null;
+  console.log(info);
+  if (Object.keys(info.content).length) {
+    gitData = {};
+    for (const key of Object.keys(info.content)) {
+      gitData[key] = info.content[key].data.repository.object.history.totalCount
     }
   }
 
@@ -96,7 +96,7 @@ const Aboutpage = () => {
         Major/Track: ECE/Software Engineering
         Primary responsibilites: Backend development, database management, API management
       `,
-      "commitCount": happy ? happy['kunaljain@utexas.edu'] : ''
+      "commitCount": gitData ? gitData['kunaljain@utexas.edu'] : ''
     },
     {
       "name": "Yulei Xu",
@@ -132,7 +132,7 @@ const Aboutpage = () => {
         Major/Track: ECE/Software Engineering
         Primary responsibilites: Backend development, database management, API management
       `,
-      "commitCount": happy ? happy['balakumaran55@gmail.com'] : ''
+      "commitCount": gitData ? gitData['balakumaran55@gmail.com'] : ''
     },
     {
       "name": "Jacob Poston",
@@ -141,7 +141,7 @@ const Aboutpage = () => {
         Major/Track: ECE/Software Engineering
         Primary responsibilites: Writing, CSS Styling, Frontend Design, Moral Support
       `,
-      "commitCount": happy ? happy['jacob.poston.6@gmail.com'] : ''
+      "commitCount": gitData ? gitData['jacob.poston.6@gmail.com'] : ''
     }
   ];
 

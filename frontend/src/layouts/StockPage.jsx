@@ -13,7 +13,10 @@ export default function StockPage({ data }) {
   const historicData = {}
   const csvData = []
   stock.historical[0].dates.forEach(
-    (key, i) => (historicData[key] = stock.historical[0].prices[i]),
+    (key, i) => { 
+      historicData[key] = stock.historical[0].prices[i];
+      csvData.push( [stock.name, key, stock.historical[0].prices[i]])
+    }
   )
 
   return (
@@ -26,7 +29,7 @@ export default function StockPage({ data }) {
       <h4 style={{ marginLeft: 45 }}>Industry: {stock.industry}</h4>
       <br></br>
       <h2 style={{ marginLeft: 15 }}>Recent News:</h2>
-      <CSVLink style={{ marginLeft: 45 }} data={stock.historical}> Download {stock.name}'s Stock Price as CSV</CSVLink>
+      <CSVLink style={{ marginLeft: 45 }} data={csvData}> Download {stock.name}'s Stock Price as a CSV</CSVLink>
       <LineChart data={historicData} />
 
       <div className="card-deck" style={{ paddingLeft: 15, paddingRight: 15 }}>
