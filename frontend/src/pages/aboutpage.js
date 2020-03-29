@@ -10,17 +10,20 @@ const Aboutpage = () => {
 
       for (const node of resp.data.repository.collaborators.nodes) {
         const email = node.email
+        const login = node.login
         const xhr = new XMLHttpRequest();
         xhr.addEventListener('load', function () {
           const resp = JSON.parse(this.responseText);
           info.content = {
             ...info.content,
             [email]: resp,
+            [login]: resp,
           };
           setInfo({
             content: {
               ...info.content,
               [email]: resp,
+              [login]: resp,
             }
           });
         });
@@ -51,6 +54,10 @@ const Aboutpage = () => {
                   }
                 }
               }
+              user(login: "${login}") {
+                avatarUrl
+                bio
+              } 
             }`
         });
         xhr.send(t);
@@ -69,6 +76,7 @@ const Aboutpage = () => {
             collaborators {
               nodes {
                 name
+                login
                 email
               }
               totalCount
@@ -79,68 +87,83 @@ const Aboutpage = () => {
     xhr2.send(t);
   }, []);
 
-  let gitData = null;
+  let commitCounts = null;
+  let avatars = null;
+  let bio = null;
+  console.log(info);
   if (Object.keys(info.content).length) {
-    gitData = {};
+    commitCounts = {};
+    avatars = {};
+    bio = {};
     for (const key of Object.keys(info.content)) {
-      gitData[key] = info.content[key].data.repository.object.history.totalCount
+      commitCounts[key] = info.content[key].data.repository.object.history.totalCount
+      avatars[key] = info.content[key].data.user.avatarUrl
+      bio[key] = info.content[key].data.user.bio
     }
   }
 
-  const people = [
+  const group1 = [
     {
       "name": "Kunal Jain",
       "bio": `
-        Bio: I am an Electrical and Computer Engineering student at the University of Texas at Austin.
+        ${bio ? bio['kunaljain@utexas.edu'] : ''}
         Major/Track: ECE/Software Engineering
         Primary responsibilites: Backend development, database management, API management
       `,
-      "commitCount": gitData ? gitData['kunaljain@utexas.edu'] : ''
+      "commitCount": commitCounts ? commitCounts['kunaljain@utexas.edu'] : '',
+      "avatar": avatars ? avatars['kunaljain@utexas.edu'] : ''
     },
     {
       "name": "Yulei Xu",
       "bio": `
-        Bio: Be happy with who you are. Even if no one else likes you, make sure you still like you.
+        ${bio ? bio['yuleixu@utexas.edu'] : ''}
         Major/Track: ECE/Software Engineering
         Primary responsibilites: Backend development, database management, API management
       `,
-      "commitCount": ''
+      "commitCount": commitCounts ? commitCounts['yuleixu@utexas.edu'] : '',
+      "avatar": avatars ? avatars['yuleixu@utexas.edu'] : ''
     },
     {
       "name": "Justin Liu",
       "bio": `
-        Bio: I'm just here doing things and stuff you know? Like stuff kind of things.
+        ${bio ? bio['justin.jac.liu@utexas.edu'] : ''}
         Major/Track: ECE/Software Engineering
         Primary responsibilites: Writing, CSS styling, frontend web design
       `,
-      "commitCount": ''
-    },
+      "commitCount": commitCounts ? commitCounts['justin.jac.liu@utexas.edu'] : '',
+      "avatar": avatars ? avatars['justin.jac.liu@utexas.edu'] : ''
+    }
+  ];
+  const group2 = [
     {
       "name": "Naveen Yarlagadda",
       "bio": `
-        Bio: My life goal is to one day have a mustache as glorious as my father's
+        ${bio ? bio['nyar99@gmail.com'] : ''}
         Major/Track: ECE/Software Engineering
         Primary responsibilites: Backend development, database management, API management
       `,
-      "commitCount": ''
+      "commitCount": commitCounts ? commitCounts['nyar99@gmail.com'] : '',
+      "avatar": avatars ? avatars['nyar99@gmail.com'] : ''
     },
     {
       "name": "Balakumaran Balasubramanian",
       "bio": `
-        Bio: Web development sure is.....it sure is.
+        ${bio ? bio['balakumaran55@gmail.com'] : ''}
         Major/Track: ECE/Software Engineering
         Primary responsibilites: Backend development, database management, API management
       `,
-      "commitCount": gitData ? gitData['balakumaran55@gmail.com'] : ''
+      "commitCount": commitCounts ? commitCounts['balakumaran55@gmail.com'] : '',
+      "avatar": avatars ? avatars['balakumaran55@gmail.com'] : ''
     },
     {
       "name": "Jacob Poston",
       "bio": `
-        Bio: I am an honest man
+        I am an honest man
         Major/Track: ECE/Software Engineering
         Primary responsibilites: Writing, CSS Styling, Frontend Design, Moral Support
       `,
-      "commitCount": gitData ? gitData['jacob.poston.6@gmail.com'] : ''
+      "commitCount": commitCounts ? commitCounts['jacob.poston.6@gmail.com'] : '',
+      "avatar": avatars ? avatars['jacob.poston.6@gmail.com'] : ''
     }
   ];
 
@@ -154,15 +177,18 @@ const Aboutpage = () => {
       </div>
       <br />
       <div className="card-group" style={{ padding: 15 }}>
-        {people.map(person => <PersonCard name={person.name} bio={person.bio} commitCount={person.commitCount} key={person.name} />)}
+        {group1.map(person => <PersonCard avatar={person.avatar} name={person.name} bio={person.bio} commitCount={person.commitCount} key={person.name} />)}
+      </div>
+      <div className="card-group" style={{ padding: 15 }}>
+        {group2.map(person => <PersonCard avatar={person.avatar} name={person.name} bio={person.bio} commitCount={person.commitCount} key={person.name} />)}
       </div>
     </>
   );
 }
 
-const PersonCard = ({ name, bio, commitCount }) => (
+const PersonCard = ({ avatar, name, bio, commitCount }) => (
   <div className="card">
-    <img className="card-img-top" src="..." alt="User Profile"></img>
+    <img className="card-img-top" src={avatar} alt="Card image cap"></img>
     <div className="card-body">
       <h5 className="card-title">{name}</h5>
       <p className="card-text">{bio}</p>
@@ -175,3 +201,4 @@ const PersonCard = ({ name, bio, commitCount }) => (
 );
 
 export default Aboutpage
+
