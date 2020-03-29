@@ -1,4 +1,4 @@
 [build]
-base = "461L-Stock-Project/frontend"
+base = "461L-Stock-Project/frontend/"
 publish = "public/"
 command = "npm run develop"
