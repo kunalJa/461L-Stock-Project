@@ -148,7 +148,7 @@ const Aboutpage = () => {
     <>
       <Navbar />
       <div>
-        <h2 className="home" style={{ marginLeft: 15, marginTop: 15 }}>
+        <h2 className="home" style={{ marginLeft: 15, marginTop: 15, fontWeight: 'bold'}}>
           About Us
         </h2>
       </div>

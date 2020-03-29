@@ -12,7 +12,6 @@ export default function Card({ title, text, source_name, news_url, image_url }) 
       </div>
       <div className="card-footer">
         <p className="text-muted">{source_name}</p>
-        <a href={news_url} className="text-muted">{news_url}</a>
       </div>
     </div>
   )

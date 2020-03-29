@@ -23,13 +23,13 @@ export default function StockPage({ data }) {
   return (
     <>
       <Navbar />
-      <h2 style={{ marginLeft: 45, marginTop: 15 }}>Symbol: {stock.symbol}</h2>
+      <h2 style={{ marginLeft: 45, marginTop: 15, fontWeight: 'bold'}}>Symbol: {stock.symbol}</h2>
       <h4 style={{ marginLeft: 45 }}>Name: {stock.name}</h4>
-      <h3 style={{ marginLeft: 45 }}>Latest Price: {stock.latestPrice}</h3>
+      <h4 style={{ marginLeft: 45 }}>Latest Price: {stock.latestPrice}</h4>
       <h4 style={{ marginLeft: 45 }}>Volume: {stock.latestVolume}</h4>
       <h4 style={{ marginLeft: 45 }}>Industry: {stock.industry}</h4>
       <br></br>
-      <h2 style={{ marginLeft: 15 }}>Recent News:</h2>
+      <h2 style={{ marginLeft: 45 }}>Recent News:</h2>
       <ExportCSV
         csvData={csvData}
         fileName={`${stock.symbol}-data`}
