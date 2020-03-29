@@ -29,15 +29,16 @@ export default function StockPage({ data }) {
       <h4 style={{ marginLeft: 45 }}>Volume: {stock.latestVolume}</h4>
       <h4 style={{ marginLeft: 45 }}>Industry: {stock.industry}</h4>
       <br></br>
-      <h2 style={{ marginLeft: 45 }}>Recent News:</h2>
+
+      <LineChart data={historicData} />
       <ExportCSV
         csvData={csvData}
         fileName={`${stock.symbol}-data`}
         buttonText={`Download ${stock.name}'s historical data as a CSV file`}
       />
-      <LineChart data={historicData} />
 
-      <div className="card-deck" style={{ paddingLeft: 15, paddingRight: 15 }}>
+      <h2 style={{ marginLeft: 45, fontWeight: 'bold'}}>Recent News:</h2>
+      <div className="card-deck" style={{ paddingLeft: 45, paddingRight: 45 }}>
         {stock.news.data.slice(1, 3).map((article, i) => {
           return (
             <Card
