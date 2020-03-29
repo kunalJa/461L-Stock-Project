@@ -9,7 +9,9 @@ const Stocklanding = ({ data }) => {
     <>
       <Navbar />
       <div>
-        <h2 class="home">Top Stocks: Click on a stock for more info!</h2>
+        <h2 class="home" style={{ marginTop: 15, marginLeft: 15, fontWeight: 'bold'}}>
+          Top Stocks: Click on a stock for more info!
+          </h2>
       </div>
       <br></br>
       <table class="table table-dark">
