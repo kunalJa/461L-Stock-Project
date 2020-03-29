@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from "react"
+import React, { useEffect, useState } from "react"
 import Navbar from "../components/Navbar"
 
 const Aboutpage = () => {
-  const [respy, setResp] = useState({meme: {}});
+  const [respy, setResp] = useState({ meme: {} });
   useEffect(() => {
     const xhr2 = new XMLHttpRequest();
     xhr2.addEventListener('load', function () {
@@ -25,15 +25,15 @@ const Aboutpage = () => {
           });
         });
         xhr.open('POST', 'https://api.github.com/graphql');
-        xhr.setRequestHeader('Authorization', 'bearer 9dec6f3f6c84fa4dc8b400b8854a54d06a5d9e8c');
+        xhr.setRequestHeader('Authorization', `bearer ${process.env.PERSONAL_ACCESS_TOKEN}`);
         xhr.setRequestHeader('Content-Type', 'application/json');
         const t = JSON.stringify({
           query: `
             {
               repository(owner: "kunalJa", name: "461L-Stock-Project") {
-                object(expression: \"master\") {
+                object(expression: "master") {
                   ... on Commit {
-                    history (author : {emails: [\"${email}\"]} ) {
+                    history (author : {emails: ["${email}"]} ) {
                       edges {
                         node {
                           messageHeadline
@@ -49,7 +49,7 @@ const Aboutpage = () => {
                       totalCount
                     }
                   }
-                }                
+                }
               }
             }`
         });
@@ -57,12 +57,12 @@ const Aboutpage = () => {
       }
     });
     xhr2.open('POST', 'https://api.github.com/graphql');
-    xhr2.setRequestHeader('Authorization', 'bearer 9dec6f3f6c84fa4dc8b400b8854a54d06a5d9e8c');
+    xhr2.setRequestHeader('Authorization', `bearer ${process.env.PERSONAL_ACCESS_TOKEN}`);
     xhr2.setRequestHeader('Content-Type', 'application/json');
     const t = JSON.stringify({
       query: `
         {
-          repository(owner: "kunalJa", name: "461L-Stock-Project") {         
+          repository(owner: "kunalJa", name: "461L-Stock-Project") {
             issues {
               totalCount
             }
@@ -144,7 +144,7 @@ const Aboutpage = () => {
       "commitCount": happy ? happy['jacob.poston.6@gmail.com'] : ''
     }
   ];
-  
+
   return (
     <>
       <Navbar />
@@ -155,24 +155,13 @@ const Aboutpage = () => {
       </div>
       <br />
       <div className="card-group" style={{ padding: 15 }}>
-        {/* {[
-          <PersonCard
-            name="Kunal Jain"
-            bio="
-              Bio: I'm pretty much the smart one.
-              Major/Track: ECE/Software Engineering
-              Primary responsibilites: Backend development, database management, API management
-            "
-            commitCount={happy ? happy['kunaljain@utexas.edu'] : ''}
-          />
-        ]} */}
         {people.map(person => <PersonCard name={person.name} bio={person.bio} commitCount={person.commitCount} key={person.name} />)}
       </div>
     </>
   );
 }
 
-const PersonCard = ({name, bio, commitCount}) => (
+const PersonCard = ({ name, bio, commitCount }) => (
   <div className="card">
     <img className="card-img-top" src="..." alt="Card image cap"></img>
     <div className="card-body">
