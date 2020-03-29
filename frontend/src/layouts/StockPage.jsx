@@ -4,14 +4,21 @@ import { LineChart } from "react-chartkick"
 import "chart.js"
 
 import Navbar from "../components/Navbar"
+import ExportCSV from "../components/ExportCSV"
 import Card from "../components/Card"
 
 export default function StockPage({ data }) {
   const stock = data.mongodbStockInformationInformation
   const historicData = {}
-  stock.historical[0].dates.forEach(
-    (key, i) => (historicData[key] = stock.historical[0].prices[i])
-  )
+  const csvData = []
+  stock.historical[0].dates.forEach((key, i) => {
+    historicData[key] = stock.historical[0].prices[i]
+    csvData.push({
+      symbol: stock.symbol,
+      date: key,
+      price: stock.historical[0].prices[i],
+    })
+  })
 
   return (
     <>
@@ -23,7 +30,11 @@ export default function StockPage({ data }) {
       <h4 style={{ marginLeft: 45 }}>Industry: {stock.industry}</h4>
       <br></br>
       <h2 style={{ marginLeft: 15 }}>Recent News:</h2>
-
+      <ExportCSV
+        csvData={csvData}
+        fileName={`${stock.symbol}-data`}
+        buttonText={`Download ${stock.name}'s historical data as a CSV file`}
+      />
       <LineChart data={historicData} />
 
       <div className="card-deck" style={{ paddingLeft: 15, paddingRight: 15 }}>
