@@ -238,6 +238,7 @@ const Aboutpage = () => {
       </div>
       <p style={{fontSize: 20}} align="center">Total Commits: {totalCommits}</p>
       <p style={{fontSize: 20}} align="center">Total Issues: {totalIssues}</p>
+      <p style={{fontSize: 20}} align="center">Link to <a href="https://github.com/kunalJa/461L-Stock-Project">Repo</a></p>
     </>
   );
 }
