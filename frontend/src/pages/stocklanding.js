@@ -26,6 +26,7 @@ const Stocklanding = ({ data }) => {
               text={node.latestPrice}
               image_url={node.image}
               internal
+              small
               key={i}
             />
           )

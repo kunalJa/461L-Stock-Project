@@ -1,8 +1,8 @@
 import React from "react"
 import { Link } from "gatsby"
 
-export default function Card({ title, text, source_name, news_url, image_url, internal }) {
-  const style = internal ? { width: "75px" } : { width: "250px" }
+export default function Card({ title, text, source_name, news_url, image_url, internal, small }) {
+  const style = small ? { width: "75px" } : { width: "250px" }
   return (
     <div className="card">
       <div className="card-body">
