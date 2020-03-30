@@ -10,7 +10,7 @@ const IndexPage = ({ data }) => {
     <>
       <Navbar />
       <div>
-        <h1 class="home" style={{ marginLeft: 15, marginTop: 15, marginBottom: 15, fontWeight: 'bold'}}>
+        <h1 class="home" style={{ marginLeft: 15, marginTop: 15, marginBottom: 15, fontWeight: 'bold' }}>
           Plumbing & Co. Finance
         </h1>
       </div>
@@ -53,10 +53,7 @@ export default IndexPage
 
 export const newsTeslaResult = graphql`
   query teslaNews {
-    allMongodbStockInformationNews(
-      filter: { company: { eq: "Tesla Inc." } }
-      limit: 3
-    ) {
+    allMongodbStockInformationNews(limit: 3) {
       edges {
         node {
           article {

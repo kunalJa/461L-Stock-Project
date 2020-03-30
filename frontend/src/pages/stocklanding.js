@@ -1,60 +1,63 @@
-import React from "react"
-import { graphql, Link } from "gatsby"
+import React, { useState } from "react"
+import { graphql } from "gatsby"
 
 import Navbar from "../components/Navbar"
+import Card from "../components/Card"
 
 const Stocklanding = ({ data }) => {
   const stocks = data.allMongodbStockInformationInformation.edges
+  const [page, setPage] = useState(0)
+  const perPage = 6
   return (
     <>
       <Navbar />
       <div>
-        <h2 class="home" style={{ marginTop: 15, marginLeft: 15, fontWeight: 'bold'}}>
+        <h2 class="home" style={{ marginTop: 15, marginLeft: 15, fontWeight: 'bold' }}>
           Top Stocks: Click on a stock for more info!
           </h2>
       </div>
-      <br></br>
-      <table class="table table-dark">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Symbol</th>
-            <th scope="col">Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          {stocks
-            .sort((a, b) => {
-              return b.node.latestPrice - a.node.latestPrice
-            })
-            .map(({ node }, i) => {
-              return (
-                <tr key={i}>
-                  <th scope="row">
-                    <Link to={`/stock/${node.symbol}`}>{i}</Link>
-                  </th>
-                  <td>
-                    <Link to={`/stock/${node.symbol}`}>{node.name}</Link>
-                  </td>
-                  <td>
-                    <Link to={`/stock/${node.symbol}`}>{node.symbol}</Link>
-                  </td>
-                  <td>
-                    <Link to={`/stock/${node.symbol}`}>{node.latestPrice}</Link>
-                  </td>
-                </tr>
-              )
-            })}
-        </tbody>
-      </table>
-      <img
-        style={{ width: "800px" }}
-        src={
-          "https://www.altran.com/as-content/uploads/sites/4/2017/05/5-0_finance_1600.jpg"
-        }
-        alt=""
-      />
+      <div className="card-columns" style={{ paddingLeft: 15, paddingRight: 15 }}>
+        {stocks.slice(page * perPage, (page + 1) * perPage).map(({ node }, i) => {
+          return (
+            <Card
+              title={node.symbol}
+              source_name={node.name}
+              news_url={`/stock/${node.symbol}`}
+              text={node.latestPrice}
+              image_url={node.image}
+              internal
+              key={i}
+            />
+          )
+        })}
+      </div>
+      <nav aria-label="Page navigation" className="d-flex justify-content-center mt-3">
+        <ul className="pagination">
+          <li className="page-item">
+            <button
+              className="page-link"
+              onClick={
+                () => setPage(Math.max(page - 1, 0))
+              }
+            >
+              Previous
+            </button>
+          </li>
+          <li className="page-item">
+            <p className="page-link">{page}</p>
+          </li>
+          <li className="page-item">
+            <button
+              className="page-link"
+              onClick={
+                () => setPage(Math.min(page + 1, Math.ceil(stocks.length / perPage) - 1))
+              }
+            >
+              Next
+            </button>
+          </li>
+        </ul>
+      </nav>
     </>
   )
 }
@@ -63,9 +66,10 @@ export default Stocklanding
 
 export const stockData = graphql`
   query allStocks {
-    allMongodbStockInformationInformation {
+    allMongodbStockInformationInformation(sort: { fields: [latestPrice], order: DESC }) {
       edges {
         node {
+          image
           symbol
           name
           latestPrice
