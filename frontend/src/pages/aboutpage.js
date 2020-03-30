@@ -7,7 +7,6 @@ const Aboutpage = () => {
     const xhr2 = new XMLHttpRequest();
     xhr2.addEventListener('load', function () {
       const resp = JSON.parse(this.responseText);
-
       for (const node of resp.data.repository.collaborators.nodes) {
         const email = node.email
         const login = node.login
@@ -34,8 +33,15 @@ const Aboutpage = () => {
           query: `
             {
               repository(owner: "kunalJa", name: "461L-Stock-Project") {
+                issues {
+                  totalCount
+                }
+                
                 object(expression: "master") {
                   ... on Commit {
+                    total: history {
+                      totalCount
+                    }
                     history (author : {emails: ["${email}"]} ) {
                       edges {
                         node {
@@ -94,6 +100,8 @@ const Aboutpage = () => {
   let avatars = null;
   let bio = null;
   let issues = null;
+  let totalIssues = null;
+  let totalCommits = null;
   console.log(info);
   if (Object.keys(info.content).length) {
     commitCounts = {};
@@ -105,6 +113,8 @@ const Aboutpage = () => {
       avatars[key] = info.content[key].data.user.avatarUrl
       bio[key] = info.content[key].data.user.bio
       issues[key] = info.content[key].data.user.issues.totalCount
+      totalIssues = info.content[key].data.repository.issues.totalCount
+      totalCommits = info.content[key].data.repository.object.total.totalCount
     }
   }
 
@@ -183,13 +193,18 @@ const Aboutpage = () => {
       <div>
         <h2 className="home" style={{ marginTop: 15 }} align="center"> Our Motivation </h2>
       </div>
-      <p style={{ marginLeft: 380, marginRight: 380 }} align="left | right"> 
+      <p style={{ marginLeft: 300, marginRight: 300 }} align="left | right"> 
           The primary goal for developing this website was twofold: a topic out of learning interest, and of self interest. 
           For the former, many of us found stocks as a fascinating subject, with many broad elements to learn from. 
           Data is rich, multiple APIs provide extremely detailed data about the subject, and graphical elements to track individual stocks were necessary. 
           The tracking website seemed like an interesting challenge with real world application. Our application keeps things simple for its users. 
           You see exactly all the pertinent information for a casual trader, and can stay informed on the ratings and performances of stocks based on the opinions of those who know more than you. 
       </p>
+      <div>
+        <h2 className="home" style={{ marginTop: 15 }} align="center"> Team Stats </h2>
+      </div>
+      <p style={{ marginLeft: 300, marginRight: 300 }} >Commits: {totalCommits}</p>
+      <p style={{ marginLeft: 300, marginRight: 300 }} >Issues: {totalIssues}</p>
     </>
   );
 }
