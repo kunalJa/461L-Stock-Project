@@ -181,7 +181,7 @@ const Aboutpage = () => {
     <>
       <Navbar />
       <div>
-        <h2 className="home" style={{ marginTop: 15 }} align="center"> About Us </h2>
+        <h2 className="home" style={{ marginTop: 15, fontWeight: 'bold'}} align="center"> About Us </h2>
       </div>
       <br />
       <div className="card-group" style={{ padding: 15 }}>
@@ -201,7 +201,7 @@ const Aboutpage = () => {
         You see exactly all the pertinent information for a casual trader, and can stay informed on the ratings and performances of stocks based on the opinions of those who know more than you.
       </p>
       <div>
-        <h2 className="home" style={{ marginTop: 15 }} align="center"> Data </h2>
+        <h2 className="home" style={{ marginTop: 15, fontWeight: 'bold'}} align="center"> Data </h2>
       </div>
       <p style={{ marginLeft: 150, marginRight: 150 }} align="left | right">
         The intention of the application is to serve as a central hub for stocks and financial information.
@@ -222,7 +222,7 @@ const Aboutpage = () => {
           We use this information to gauge whether the outlook on specific sectors and industries is positive, negative, or neutral.
       </p>
       <div>
-        <h2 className="home" style={{ marginTop: 15 }} align="center"> Tools </h2>
+        <h2 className="home" style={{ marginTop: 15, fontWeight: 'bold'}} align="center"> Tools </h2>
       </div>
       <p style={{ marginLeft: 150, marginRight: 150 }} align="left | right">
         Our website was created on Gatsby, which is a React framework for creating static web applications.
@@ -234,7 +234,7 @@ const Aboutpage = () => {
         It is this data that is then manipulated by Gatsby to create our webpages.
       </p>
       <div>
-        <h2 className="home" style={{ marginTop: 15 }} align="center"> Team Stats </h2>
+        <h2 className="home" style={{ marginTop: 15, fontWeight: 'bold' }} align="center"> Team Stats </h2>
       </div>
       <p style={{ fontSize: 20 }} align="center">Total Commits: {totalCommits}</p>
       <p style={{ fontSize: 20 }} align="center">Total Issues: {totalIssues}</p>
