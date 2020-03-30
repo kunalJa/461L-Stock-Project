@@ -193,7 +193,7 @@ const Aboutpage = () => {
       <div>
         <h2 className="home" style={{ marginTop: 15 }} align="center"> Our Motivation </h2>
       </div>
-      <p style={{ marginLeft: 300, marginRight: 300 }} align="left | right"> 
+      <p style={{ marginLeft: 150, marginRight: 150 }} align="left | right"> 
           The primary goal for developing this website was twofold: a topic out of learning interest, and of self interest. 
           For the former, many of us found stocks as a fascinating subject, with many broad elements to learn from. 
           Data is rich, multiple APIs provide extremely detailed data about the subject, and graphical elements to track individual stocks were necessary. 
@@ -203,14 +203,15 @@ const Aboutpage = () => {
       <div>
         <h2 className="home" style={{ marginTop: 15 }} align="center"> Data </h2>
       </div>
-      <p style={{ marginLeft: 300, marginRight: 300 }} align="left | right"> 
+      <p style={{ marginLeft: 150, marginRight: 150 }} align="left | right"> 
           The intention of the application is to serve as a central hub for stocks and financial information. 
           We have three models of interest: stocks, industries/sectors, and financial news. 
           Users that are interested in learning about stocks can do so from a variety of sources. 
           Stocks are intrinsically linked with the industries and sectors that they are associated with, and we have also created financial news that is sector oriented as well. 
           Financial news is useful to users as well, so that they can get a general sentiment of how the stock market is performing overall. 
           We provide that in a news tab that users can access which will contain news information both about the stocks that we serve and about the market as a whole. 
-	        Our stock information comes from a free API called financial modeling prep. 
+	        <br />
+          Our stock information comes from a free API called financial modeling prep. 
           This website comes with very rich information about each stock, including volume, high, low, close, and start for each day going back five years. 
           We only grab some of this information, including name, industry, sector, and image for each stock. 
           We also grab all the close price data for the last few years in order to create a graph. 
@@ -221,10 +222,22 @@ const Aboutpage = () => {
           We use this information to gauge whether the outlook on specific sectors and industries is positive, negative, or neutral. 
       </p>
       <div>
+        <h2 className="home" style={{ marginTop: 15 }} align="center"> Tools </h2>
+      </div>
+      <p style={{ marginLeft: 150, marginRight: 150 }} align="left | right"> 
+          Our website was created on Gatsby, which is a React framework for creating static web applications. 
+          This works well for our application because we only have three models we need to serve. 
+          Each instance of our model swaps out data, so we simply created templates for our stock page and our industry page, which are configured based on the database information for whatever stock is being served. 
+          We also use GraphQL to manipulate and grab our data. For example, the graph on each stock page is created in GraphQL using information in the database. 
+	        The database is maintained on MongoDB and populated using a Python script. 
+          The Python script accesses two separate APIs that work together to synthesize instances of three different models which are stored in the database under different collections. 
+          It is this data that is then manipulated by Gatsby to create our webpages. 
+      </p>
+      <div>
         <h2 className="home" style={{ marginTop: 15 }} align="center"> Team Stats </h2>
       </div>
-      <p align="center">Total Commits: {totalCommits}</p>
-      <p align="center">Total Issues: {totalIssues}</p>
+      <p style={{fontSize: 20}} align="center">Total Commits: {totalCommits}</p>
+      <p style={{fontSize: 20}} align="center">Total Issues: {totalIssues}</p>
     </>
   );
 }
