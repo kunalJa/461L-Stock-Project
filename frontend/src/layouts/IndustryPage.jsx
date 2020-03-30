@@ -10,7 +10,7 @@ export default function IndustryPage({ data }) {
   return (
     <>
       <Navbar />
-      <h2 style={{ marginLeft: 45, marginTop: 15 }}>
+      <h2 style={{ marginLeft: 15, marginTop: 15, fontWeight: 'bold'}}>
         Industry: {industry.name}
       </h2>
       {sentiment === "Positive" && (
@@ -22,7 +22,7 @@ export default function IndustryPage({ data }) {
       {sentiment === "Negative" && (
         <div className="alert alert-danger">Industry is doing Negatively!</div>
       )}
-      <h3 className="mt-3">Stocks that are part of this industry</h3>
+      <h3 className="mt-3" style={{marginLeft: 15}}>Stocks that are part of this industry</h3>
       <ul className="mb-5">
         {industry.stocks.map((stock, i) => {
           return (

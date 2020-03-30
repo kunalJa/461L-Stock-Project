@@ -9,7 +9,7 @@ const Industrylanding = ({ data }) => {
     <>
       <Navbar />
       <div>
-        <h2 class="home" style={{ marginTop: 15, marginLeft: 15 }}>
+        <h2 class="home" style={{ marginTop: 15, marginLeft: 15, fontWeight: 'bold'}}>
           All Industries: Click on an industry for more info!
         </h2>
       </div>

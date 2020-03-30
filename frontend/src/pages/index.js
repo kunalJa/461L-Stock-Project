@@ -10,8 +10,8 @@ const IndexPage = ({ data }) => {
     <>
       <Navbar />
       <div>
-        <h1 class="home" style={{ marginLeft: 15, marginTop: 15 }}>
-          Plumbing & co. Finance
+        <h1 class="home" style={{ marginLeft: 15, marginTop: 15, marginBottom: 15, fontWeight: 'bold'}}>
+          Plumbing & Co. Finance
         </h1>
       </div>
       <div className="card-deck ml-3">
