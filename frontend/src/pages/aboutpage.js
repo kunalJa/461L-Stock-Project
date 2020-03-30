@@ -203,8 +203,8 @@ const Aboutpage = () => {
       <div>
         <h2 className="home" style={{ marginTop: 15 }} align="center"> Team Stats </h2>
       </div>
-      <p style={{ marginLeft: 300, marginRight: 300 }} >Commits: {totalCommits}</p>
-      <p style={{ marginLeft: 300, marginRight: 300 }} >Issues: {totalIssues}</p>
+      <p align="center">Total Commits: {totalCommits}</p>
+      <p align="center">Total Issues: {totalIssues}</p>
     </>
   );
 }
@@ -221,7 +221,7 @@ const PersonCard = ({ avatar, name, bio, major, responsibilities, commitCount, i
       <p>Issues: {issues}</p>
     </div>
     <div className="card-footer">
-      <small className="text-muted">Last updated 3 mins ago</small>
+      <small className="text-muted"></small>
     </div>
   </div>
 );
