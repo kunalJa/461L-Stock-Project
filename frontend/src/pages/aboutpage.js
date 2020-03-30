@@ -201,6 +201,26 @@ const Aboutpage = () => {
           You see exactly all the pertinent information for a casual trader, and can stay informed on the ratings and performances of stocks based on the opinions of those who know more than you. 
       </p>
       <div>
+        <h2 className="home" style={{ marginTop: 15 }} align="center"> Data </h2>
+      </div>
+      <p style={{ marginLeft: 300, marginRight: 300 }} align="left | right"> 
+          The intention of the application is to serve as a central hub for stocks and financial information. 
+          We have three models of interest: stocks, industries/sectors, and financial news. 
+          Users that are interested in learning about stocks can do so from a variety of sources. 
+          Stocks are intrinsically linked with the industries and sectors that they are associated with, and we have also created financial news that is sector oriented as well. 
+          Financial news is useful to users as well, so that they can get a general sentiment of how the stock market is performing overall. 
+          We provide that in a news tab that users can access which will contain news information both about the stocks that we serve and about the market as a whole. 
+	        Our stock information comes from a free API called financial modeling prep. 
+          This website comes with very rich information about each stock, including volume, high, low, close, and start for each day going back five years. 
+          We only grab some of this information, including name, industry, sector, and image for each stock. 
+          We also grab all the close price data for the last few years in order to create a graph. 
+          The news information comes from an api called stock news api. It allows us to grab news about stocks by tickers, company, or by sector/industry. 
+          We use these results to associate news objects for both stocks and sectors which are stored as well as separate models. The news objects are also rich in information. 
+          One piece of information that we use from our API is a general sentiment of each article. 
+          We also grab sector for each article, companies associated, and tickers associated. 
+          We use this information to gauge whether the outlook on specific sectors and industries is positive, negative, or neutral. 
+      </p>
+      <div>
         <h2 className="home" style={{ marginTop: 15 }} align="center"> Team Stats </h2>
       </div>
       <p align="center">Total Commits: {totalCommits}</p>
