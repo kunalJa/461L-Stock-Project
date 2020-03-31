@@ -23,7 +23,7 @@ const Stocklanding = ({ data }) => {
               title={node.symbol}
               source_name={node.name}
               news_url={`/stock/${node.symbol}`}
-              text={node.latestPrice}
+              text={`Price Per Share: $${node.latestPrice}`}
               image_url={node.image}
               internal
               small
