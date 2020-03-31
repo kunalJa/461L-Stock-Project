@@ -27,7 +27,7 @@ const Aboutpage = () => {
           });
         });
         xhr.open('POST', 'https://api.github.com/graphql');
-        xhr.setRequestHeader('Authorization', `bearer ${process.env.PERSONAL_ACCESS_TOKEN}`);
+        xhr.setRequestHeader('Authorization', `bearer ${process.env.GATSBY_PERSONAL_ACCESS_TOKEN}`);
         xhr.setRequestHeader('Content-Type', 'application/json');
         const t = JSON.stringify({
           query: `
@@ -73,7 +73,7 @@ const Aboutpage = () => {
       }
     });
     xhr2.open('POST', 'https://api.github.com/graphql');
-    xhr2.setRequestHeader('Authorization', `bearer ${process.env.PERSONAL_ACCESS_TOKEN}`);
+    xhr2.setRequestHeader('Authorization', `bearer ${process.env.GATSBY_PERSONAL_ACCESS_TOKEN}`);
     xhr2.setRequestHeader('Content-Type', 'application/json');
     const t = JSON.stringify({
       query: `
