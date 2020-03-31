@@ -1,8 +1,10 @@
 import React from "react"
 import { Link } from "gatsby"
 
-export default function Card({ title, text, source_name, news_url, image_url, internal, small }) {
+export default function Card({ title, text, source_name, news_url, image_url, internal, small, industry, percentChange}) {
   const style = small ? { width: "75px" } : { width: "250px" }
+  let percentChangeColor = "red", percentChangeSign = "↓";
+  if (percentChange > 0) { percentChangeColor = "lime"; percentChangeSign = "↑"; }
   return (
     <div className="card">
       <div className="card-body">
@@ -19,6 +21,8 @@ export default function Card({ title, text, source_name, news_url, image_url, in
           <Link to={news_url}>
             <h5>{title}</h5>
             <p className="card-text">{text}</p>
+            <p style={{color: percentChangeColor}} className="card-text">{percentChangeSign}{percentChange.toString().substring(1)}%</p>
+            <p className="card-text">{industry}</p>
           </Link>
         )}
       </div>

@@ -28,6 +28,8 @@ const Stocklanding = ({ data }) => {
               internal
               small
               key={i}
+              industry={node.industry}
+              percentChange={node.percentChange}
             />
           )
         })}
@@ -74,6 +76,8 @@ export const stockData = graphql`
           symbol
           name
           latestPrice
+          industry
+          percentChange
         }
       }
     }
