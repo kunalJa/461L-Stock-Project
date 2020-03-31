@@ -10,7 +10,7 @@ const IndexPage = ({ data }) => {
     <>
       <Navbar />
       <div>
-        <h1 class="home" style={{ marginLeft: 15, marginTop: 15, marginBottom: 15, fontWeight: 'bold'}}>
+        <h1 class="home" style={{ marginLeft: 15, marginTop: 15, marginBottom: 15, fontWeight: 'bold' }}>
           Plumbing & Co. Finance
         </h1>
       </div>
@@ -27,10 +27,12 @@ const IndexPage = ({ data }) => {
           to see information about each stock, industry, or related news!
         </h1>
       </div>
-      <br></br>
+      <h2 class="home" style={{ marginTop: 45, marginLeft: 15, fontWeight: 'bold' }}>
+        Recent News
+      </h2>
       <div
-        className="card-deck mt-5"
-        style={{ paddingLeft: 15, paddingRight: 15 }}
+        className="card-deck"
+        style={{ paddingLeft: 15, paddingRight: 15, }}
       >
         {news.map(({ node }, i) => {
           return (
@@ -53,10 +55,7 @@ export default IndexPage
 
 export const newsTeslaResult = graphql`
   query teslaNews {
-    allMongodbStockInformationNews(
-      filter: { company: { eq: "Tesla Inc." } }
-      limit: 3
-    ) {
+    allMongodbStockInformationNews(limit: 3) {
       edges {
         node {
           article {

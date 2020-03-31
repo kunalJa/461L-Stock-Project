@@ -51,7 +51,7 @@ const Newslanding = ({ data }) => {
             <button
               className="page-link"
               onClick={
-                () => setPage(Math.min(page + 1, Math.ceil(news.length / perPage)))
+                () => setPage(Math.min(page + 1, Math.ceil(news.length / perPage) - 1))
               }
             >
               Next

@@ -1,0 +1,643 @@
+{
+  "id": "e8053f7f-582d-4d81-a389-684881a7e3d3",
+  "version": "2.0",
+  "name": "EE461L-Stocks",
+  "url": "https://master--adoring-ride-ce922e.netlify.com/",
+  "tests": [{
+    "id": "f71ac146-722e-47a2-b495-72a934ae6a4f",
+    "name": "Open Stock Info",
+    "commands": [{
+      "id": "4929c7fe-ceb2-44e0-8285-94ccad21b22b",
+      "comment": "",
+      "command": "open",
+      "target": "https://master--adoring-ride-ce922e.netlify.com/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "05edcc3f-dd34-4bbd-b75d-baccb134edb9",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1900x1020",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "35f62b3b-69bf-4eee-9d45-4708fc6d0c48",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Stocks",
+      "targets": [
+        ["linkText=Stocks", "linkText"],
+        ["css=.nav-item:nth-child(2) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Stocks')]", "xpath:link"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/nav/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/stocklanding')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Stocks')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4d25514a-2b9f-432c-9e7c-56bf258e2124",
+      "comment": "",
+      "command": "click",
+      "target": "css=.card:nth-child(1) h5",
+      "targets": [
+        ["css=.card:nth-child(1) h5", "css:finder"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/div[2]/div/div/a/h5", "xpath:idRelative"],
+        ["xpath=//h5", "xpath:position"],
+        ["xpath=//h5[contains(.,'AMZN')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "f86d7915-4f42-4a6f-9385-067815abe136",
+    "name": "Open News Article",
+    "commands": [{
+      "id": "1d920a67-9043-42d3-b91b-66b517307566",
+      "comment": "",
+      "command": "open",
+      "target": "https://master--adoring-ride-ce922e.netlify.com/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c3d1c5ea-d09d-4e6e-bf83-6a6ceb33741a",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1900x1020",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a42a0256-56e3-48ad-89b0-d93eb6557044",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=News",
+      "targets": [
+        ["linkText=News", "linkText"],
+        ["css=.nav-item:nth-child(3) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'News')]", "xpath:link"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/nav/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/newslanding')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'News')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "aa8f042a-c7f4-43c2-bad8-98c2a6ec8570",
+      "comment": "",
+      "command": "click",
+      "target": "css=.card:nth-child(1) h5",
+      "targets": [
+        ["css=.card:nth-child(1) h5", "css:finder"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/div[2]/div/div/a/h5", "xpath:idRelative"],
+        ["xpath=//h5", "xpath:position"],
+        ["xpath=//h5[contains(.,'Industrials track for best week ever, and these stocks could be a buy')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "fa0fabae-9651-4ce3-9845-49a0d7c8cfb1",
+    "name": "Open Industry Info",
+    "commands": [{
+      "id": "bc71393b-d8fc-44fc-9759-b7e103462d83",
+      "comment": "",
+      "command": "open",
+      "target": "https://master--adoring-ride-ce922e.netlify.com/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fce01188-e796-4931-85e6-252e2c838060",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1900x1020",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b2ed2080-024c-4514-ac01-8c100701944a",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Industries",
+      "targets": [
+        ["linkText=Industries", "linkText"],
+        ["css=.nav-item:nth-child(4) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Industries')]", "xpath:link"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/nav/ul/li[4]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/industrylanding')]", "xpath:href"],
+        ["xpath=//li[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Industries')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "68ea6a96-f009-4da1-a921-6ca1171e6068",
+      "comment": "",
+      "command": "click",
+      "target": "css=.card:nth-child(3) h5",
+      "targets": [
+        ["css=.card:nth-child(3) h5", "css:finder"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/div[2]/div[3]/div/a/h5", "xpath:idRelative"],
+        ["xpath=//div[3]/div/a/h5", "xpath:position"],
+        ["xpath=//h5[contains(.,'Online Media')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "dec1aceb-2167-40c0-a142-00829b6625aa",
+    "name": "Open Stock From Industry",
+    "commands": [{
+      "id": "538f0afd-a79c-4eba-9b40-b49f89cf0c38",
+      "comment": "",
+      "command": "open",
+      "target": "https://master--adoring-ride-ce922e.netlify.com/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "664ea039-be01-489a-bfc7-6e05e242d286",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1900x1020",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "63901a9b-2778-407b-90ee-48733a625b0c",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Industries",
+      "targets": [
+        ["linkText=Industries", "linkText"],
+        ["css=.nav-item:nth-child(4) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Industries')]", "xpath:link"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/nav/ul/li[4]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/industrylanding')]", "xpath:href"],
+        ["xpath=//li[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Industries')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0733d5aa-02fa-469d-975b-21be600de805",
+      "comment": "",
+      "command": "click",
+      "target": "css=.card:nth-child(1) h5",
+      "targets": [
+        ["css=.card:nth-child(1) h5", "css:finder"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/div[2]/div/div/a/h5", "xpath:idRelative"],
+        ["xpath=//h5", "xpath:position"],
+        ["xpath=//h5[contains(.,'Application Software')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4575fb17-c9ca-4f21-92d3-14bfa533b315",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=ADBE",
+      "targets": [
+        ["linkText=ADBE", "linkText"],
+        ["css=.mb-5 > li:nth-child(3) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'ADBE')]", "xpath:link"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/stock/ADBE')]", "xpath:href"],
+        ["xpath=//div/ul/li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'ADBE')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "781d8a27-780e-4a9c-9205-8df4b5f300fe",
+    "name": "Open News From Stock",
+    "commands": [{
+      "id": "72aff4fd-4e21-4070-ac1f-be313cae67e3",
+      "comment": "",
+      "command": "open",
+      "target": "https://master--adoring-ride-ce922e.netlify.com/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "37e49fb2-4d96-4be6-8663-a7d772e9763f",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1900x1020",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "95172477-b344-476c-a6f9-0e2e49876c00",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Stocks",
+      "targets": [
+        ["linkText=Stocks", "linkText"],
+        ["css=.nav-item:nth-child(2) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Stocks')]", "xpath:link"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/nav/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/stocklanding')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Stocks')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "119fe12e-5393-419f-91c8-e9dd1d876d4f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.card:nth-child(2) h5",
+      "targets": [
+        ["css=.card:nth-child(2) h5", "css:finder"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/div[2]/div[2]/div/a/h5", "xpath:idRelative"],
+        ["xpath=//div[2]/div/a/h5", "xpath:position"],
+        ["xpath=//h5[contains(.,'GOOG')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2e603216-ca32-45df-9b47-3887ad911f1c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.card:nth-child(1) h5",
+      "targets": [
+        ["css=.card:nth-child(1) h5", "css:finder"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/div[3]/div/div/a/h5", "xpath:idRelative"],
+        ["xpath=//h5", "xpath:position"],
+        ["xpath=//h5[contains(.,'15 Stocks I Bought During the Coronavirus Crash')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "999ff35e-6509-4c4f-8aed-c0c34f301090",
+    "name": "Pagination on Stock Landing",
+    "commands": [{
+      "id": "d8329760-0184-45cd-bf93-1e693c61f943",
+      "comment": "",
+      "command": "open",
+      "target": "https://master--adoring-ride-ce922e.netlify.com/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e4c4c00b-5e1b-4f13-8f3a-9d7c2ee9fc87",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1900x1020",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "19d7f3c9-69f9-4f95-807d-ca746f313aab",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Stocks",
+      "targets": [
+        ["linkText=Stocks", "linkText"],
+        ["css=.nav-item:nth-child(2) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Stocks')]", "xpath:link"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/nav/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/stocklanding')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Stocks')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b17e198c-01f9-44e5-b771-9f30bd7bbf5e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.page-item:nth-child(3) > .page-link",
+      "targets": [
+        ["css=.page-item:nth-child(3) > .page-link", "css:finder"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/nav[2]/ul/li[3]/button", "xpath:idRelative"],
+        ["xpath=//li[3]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Next')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5c407f09-dd2e-4a6d-9339-4b7e49bf2007",
+      "comment": "",
+      "command": "click",
+      "target": "css=.page-item:nth-child(3) > .page-link",
+      "targets": [
+        ["css=.page-item:nth-child(3) > .page-link", "css:finder"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/nav[2]/ul/li[3]/button", "xpath:idRelative"],
+        ["xpath=//li[3]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Next')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ce5a82bb-73fa-4cc4-8f61-bdf0f1e7b5df",
+      "comment": "",
+      "command": "click",
+      "target": "css=.page-item:nth-child(3) > .page-link",
+      "targets": [
+        ["css=.page-item:nth-child(3) > .page-link", "css:finder"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/nav[2]/ul/li[3]/button", "xpath:idRelative"],
+        ["xpath=//li[3]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Next')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4ed82a70-e69f-4357-a442-07738394482c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.page-item:nth-child(3) > .page-link",
+      "targets": [
+        ["css=.page-item:nth-child(3) > .page-link", "css:finder"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/nav[2]/ul/li[3]/button", "xpath:idRelative"],
+        ["xpath=//li[3]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Next')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "6c8de4c8-1854-44ca-be95-0c1a3f8f530c",
+    "name": "Pagination on News Landing",
+    "commands": [{
+      "id": "fa517e20-09cc-4b66-84ee-ffcf3de5322c",
+      "comment": "",
+      "command": "open",
+      "target": "https://master--adoring-ride-ce922e.netlify.com/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b298f37b-08ea-4872-ac85-cb8463f400dd",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1900x1020",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "753af924-89de-4cc0-b9e6-f917c246b65d",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=News",
+      "targets": [
+        ["linkText=News", "linkText"],
+        ["css=.nav-item:nth-child(3) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'News')]", "xpath:link"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/nav/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/newslanding')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'News')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d3aa3a0d-d299-47fe-868f-4949ede95aca",
+      "comment": "",
+      "command": "click",
+      "target": "css=.page-item:nth-child(3) > .page-link",
+      "targets": [
+        ["css=.page-item:nth-child(3) > .page-link", "css:finder"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/nav[2]/ul/li[3]/button", "xpath:idRelative"],
+        ["xpath=//li[3]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Next')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "95bc7149-a67a-4989-9495-32bdc0947d13",
+      "comment": "",
+      "command": "click",
+      "target": "css=.page-item:nth-child(3) > .page-link",
+      "targets": [
+        ["css=.page-item:nth-child(3) > .page-link", "css:finder"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/nav[2]/ul/li[3]/button", "xpath:idRelative"],
+        ["xpath=//li[3]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Next')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ccc20385-d08d-404f-9570-56d78d84917c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.page-item:nth-child(3) > .page-link",
+      "targets": [
+        ["css=.page-item:nth-child(3) > .page-link", "css:finder"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/nav[2]/ul/li[3]/button", "xpath:idRelative"],
+        ["xpath=//li[3]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Next')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6e4daebb-b76c-49ae-a814-01e81578b1a5",
+      "comment": "",
+      "command": "click",
+      "target": "css=.page-item:nth-child(3) > .page-link",
+      "targets": [
+        ["css=.page-item:nth-child(3) > .page-link", "css:finder"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/nav[2]/ul/li[3]/button", "xpath:idRelative"],
+        ["xpath=//li[3]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Next')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "c4e2ebb6-d763-4de3-8f1c-1d5eecbcf568",
+    "name": "Pagination on Industry Landing",
+    "commands": [{
+      "id": "200dc56f-8023-460f-8ae8-d73f350e2695",
+      "comment": "",
+      "command": "open",
+      "target": "https://master--adoring-ride-ce922e.netlify.com/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d824e0e5-cea3-4e00-a602-397eef8dff3f",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1900x1020",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d308aa10-6fb9-4a55-8ada-c566a2822ac1",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Industries",
+      "targets": [
+        ["linkText=Industries", "linkText"],
+        ["css=.nav-item:nth-child(4) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Industries')]", "xpath:link"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/nav/ul/li[4]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/industrylanding')]", "xpath:href"],
+        ["xpath=//li[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Industries')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d97fb3c8-bfad-43e7-9797-deb35d24c8a4",
+      "comment": "",
+      "command": "click",
+      "target": "css=.page-item:nth-child(3) > .page-link",
+      "targets": [
+        ["css=.page-item:nth-child(3) > .page-link", "css:finder"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/nav[2]/ul/li[3]/button", "xpath:idRelative"],
+        ["xpath=//li[3]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Next')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1d0e6e2e-7de5-49b5-8e1b-90f535159fc8",
+      "comment": "",
+      "command": "click",
+      "target": "css=.page-item:nth-child(3) > .page-link",
+      "targets": [
+        ["css=.page-item:nth-child(3) > .page-link", "css:finder"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/nav[2]/ul/li[3]/button", "xpath:idRelative"],
+        ["xpath=//li[3]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Next')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3725f188-37f8-45ce-9e13-a4c36c3afb0c",
+      "comment": "",
+      "command": "doubleClick",
+      "target": "css=.page-item:nth-child(3) > .page-link",
+      "targets": [
+        ["css=.page-item:nth-child(3) > .page-link", "css:finder"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/nav[2]/ul/li[3]/button", "xpath:idRelative"],
+        ["xpath=//li[3]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Next')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "68f2dc24-6880-4e82-9118-fc445eef86e7",
+      "comment": "",
+      "command": "click",
+      "target": "css=.page-item:nth-child(3) > .page-link",
+      "targets": [
+        ["css=.page-item:nth-child(3) > .page-link", "css:finder"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/nav[2]/ul/li[3]/button", "xpath:idRelative"],
+        ["xpath=//li[3]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Next')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9313ef93-c248-4a00-9239-c082286cb6ba",
+      "comment": "",
+      "command": "click",
+      "target": "css=.page-item:nth-child(3) > .page-link",
+      "targets": [
+        ["css=.page-item:nth-child(3) > .page-link", "css:finder"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/nav[2]/ul/li[3]/button", "xpath:idRelative"],
+        ["xpath=//li[3]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Next')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "a23bd328-90f7-41f8-adf4-e6c8598d9472",
+    "name": "Download Stock CSV",
+    "commands": [{
+      "id": "c74b2af8-e786-49f9-a3d2-5469dbbd3f21",
+      "comment": "",
+      "command": "open",
+      "target": "https://master--adoring-ride-ce922e.netlify.com/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b69213a5-8782-465a-85d3-b827ee24e744",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1900x1020",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3b0b22f9-d9bb-446d-89dd-f3713506e738",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Stocks",
+      "targets": [
+        ["linkText=Stocks", "linkText"],
+        ["css=.nav-item:nth-child(2) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Stocks')]", "xpath:link"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/nav/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/stocklanding')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Stocks')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1d130bca-460f-44e4-88ba-15716f8e4e02",
+      "comment": "",
+      "command": "click",
+      "target": "css=.card:nth-child(3) h5",
+      "targets": [
+        ["css=.card:nth-child(3) h5", "css:finder"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/div[2]/div[3]/div/a/h5", "xpath:idRelative"],
+        ["xpath=//div[3]/div/a/h5", "xpath:position"],
+        ["xpath=//h5[contains(.,'GOOGL')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "add9183a-6084-4b56-913e-8306b204bd7c",
+      "comment": "",
+      "command": "click",
+      "target": "css=button",
+      "targets": [
+        ["css=button", "css:finder"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "3ab1c470-c9ed-43e3-bbad-0e710b67c27c",
+    "name": "Open Repo from About Page",
+    "commands": [{
+      "id": "c41d3723-0448-4eb9-869b-7f1b1095f4d0",
+      "comment": "",
+      "command": "open",
+      "target": "https://master--adoring-ride-ce922e.netlify.com/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f7999fb2-bd61-42ff-816a-823fb8e88602",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1900x1020",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a100b095-4457-40da-b8c3-b8f088682a91",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=About Us",
+      "targets": [
+        ["linkText=About Us", "linkText"],
+        ["css=.nav-item:nth-child(5) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'About Us')]", "xpath:link"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/nav/ul/li[5]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/aboutpage')]", "xpath:href"],
+        ["xpath=//li[5]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'About Us')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e168dbaa-1c03-45cc-8949-7d364020dd36",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "linkText=About Us",
+      "targets": [
+        ["linkText=About Us", "linkText"],
+        ["css=.nav-item:nth-child(5) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'About Us')]", "xpath:link"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/nav/ul/li[5]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/aboutpage')]", "xpath:href"],
+        ["xpath=//li[5]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'About Us')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "64bd5d8e-94c5-4e62-85e9-212daaad131c",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Repo",
+      "targets": [
+        ["linkText=Repo", "linkText"],
+        ["css=p > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Repo')]", "xpath:link"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/p[6]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'https://github.com/kunalJa/461L-Stock-Project')]", "xpath:href"],
+        ["xpath=//p[6]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Repo')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "16fa6b4f-8f52-4cda-93c7-bfcd5323e0a7",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["https://master--adoring-ride-ce922e.netlify.com/"],
+  "plugins": []
+}

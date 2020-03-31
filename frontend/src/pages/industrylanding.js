@@ -1,42 +1,65 @@
-import React from "react"
-import { graphql, Link } from "gatsby"
+import React, { useState } from "react"
+import { graphql } from "gatsby"
 
 import Navbar from "../components/Navbar"
+import Card from "../components/Card"
 
 const Industrylanding = ({ data }) => {
   const industries = data.allMongodbStockInformationIndustry.edges
+  const [page, setPage] = useState(0)
+  const perPage = 6
+
   return (
     <>
       <Navbar />
       <div>
-        <h2 class="home" style={{ marginTop: 15, marginLeft: 15, fontWeight: 'bold'}}>
+        <h2 class="home" style={{ marginTop: 15, marginLeft: 15, fontWeight: 'bold' }}>
           All Industries: Click on an industry for more info!
         </h2>
       </div>
-      <br></br>
-      <table class="table table-dark">
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-          </tr>
-        </thead>
-        {industries.map(({ node }, i) => {
+      <div className="card-columns" style={{ paddingLeft: 15, paddingRight: 15 }}>
+        {industries.slice(page * perPage, (page + 1) * perPage).map(({ node }, i) => {
           return (
-            <tr key={i}>
-              <td>
-                <Link to={`/industry/${node.name.split(" ").join("")}`}>
-                  {node.name}
-                </Link>
-              </td>
-            </tr>
+            <Card
+              title={node.name}
+              source_name={`Stocks included: ${node.stocks.toString()}`}
+              news_url={`/industry/${node.name.split(" ").join("")}`}
+              text={``}
+              image_url={node.industry.data[32].image_url}
+              internal
+              key={i}
+            />
           )
         })}
-      </table>
-      <img
-        style={{ width: "800px" }}
-        src={"https://miro.medium.com/max/1000/1*yPElCHCwklSJez2yKEh3Cw.jpeg"}
-        alt=""
-      />
+      </div>
+
+      <nav aria-label="Page navigation" className="d-flex justify-content-center mt-3">
+        <ul className="pagination">
+          <li className="page-item">
+            <button
+              className="page-link"
+              onClick={
+                () => setPage(Math.max(page - 1, 0))
+              }
+            >
+              Previous
+            </button>
+          </li>
+          <li className="page-item">
+            <p className="page-link">{page}</p>
+          </li>
+          <li className="page-item">
+            <button
+              className="page-link"
+              onClick={
+                () => setPage(Math.min(page + 1, Math.ceil(industries.length / perPage) - 1))
+              }
+            >
+              Next
+            </button>
+          </li>
+        </ul>
+      </nav>
     </>
   )
 }
@@ -49,6 +72,12 @@ export const industryData = graphql`
       edges {
         node {
           name
+          stocks
+          industry {
+            data {
+              image_url
+            }
+          }
         }
       }
     }
