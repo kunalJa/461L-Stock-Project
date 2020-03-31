@@ -21,6 +21,8 @@ const Stocklanding = ({ data }) => {
             <th scope="col">Name</th>
             <th scope="col">Symbol</th>
             <th scope="col">Price</th>
+            <th scope="col">↑↓</th>
+            <th scope="col">Industry</th>
           </tr>
         </thead>
         <tbody>
@@ -29,6 +31,8 @@ const Stocklanding = ({ data }) => {
               return b.node.latestPrice - a.node.latestPrice
             })
             .map(({ node }, i) => {
+              let sign = "", percentChangeColor = "red";
+              if (node.percentChange > 0) { sign = "+"; percentChangeColor = "lime" }
               return (
                 <tr key={i}>
                   <th scope="row">
@@ -42,6 +46,12 @@ const Stocklanding = ({ data }) => {
                   </td>
                   <td>
                     <Link to={`/stock/${node.symbol}`}>{node.latestPrice}</Link>
+                  </td>
+                  <td>
+                    <Link style={{color: percentChangeColor}} to={`/stock/${node.symbol}`}>{sign}{node.percentChange}</Link>
+                  </td>
+                  <td>
+                    <Link to={`/stock/${node.symbol}`}>{node.industry}</Link>
                   </td>
                 </tr>
               )
@@ -69,6 +79,8 @@ export const stockData = graphql`
           symbol
           name
           latestPrice
+          industry
+          percentChange
         }
       }
     }
