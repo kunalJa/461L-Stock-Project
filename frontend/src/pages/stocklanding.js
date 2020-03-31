@@ -14,7 +14,7 @@ const Stocklanding = ({ data }) => {
       <div>
         <h2 class="home" style={{ marginTop: 15, marginLeft: 15, fontWeight: 'bold' }}>
           Top Stocks: Click on a stock for more info!
-          </h2>
+        </h2>
       </div>
       <div className="card-columns" style={{ paddingLeft: 15, paddingRight: 15 }}>
         {stocks.slice(page * perPage, (page + 1) * perPage).map(({ node }, i) => {

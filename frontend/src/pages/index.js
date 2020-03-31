@@ -23,7 +23,7 @@ const IndexPage = ({ data }) => {
           alt=""
         />
         <h1 className="ml-5" style={{ float: "left", width: "600px" }}>
-          The stock market is doing great! Click on our navigation links (above)
+          The stock market was doing great... <br />Click on our navigation links (above)
           to see information about each stock, industry, or related news!
         </h1>
       </div>
