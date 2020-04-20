@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
+import { Link } from "gatsby"
 
 import Navbar from "../components/Navbar"
 import Card from "../components/Card"
@@ -28,24 +29,39 @@ const IndexPage = ({ data }) => {
         </h1>
       </div>
       <h2 class="home" style={{ marginTop: 45, marginLeft: 15, fontWeight: 'bold' }}>
-        Recent News
+        Check out our Content!
       </h2>
       <div
         className="card-deck"
         style={{ paddingLeft: 15, paddingRight: 15, }}
       >
-        {news.map(({ node }, i) => {
-          return (
-            <Card
-              title={node.article.title}
-              source_name={node.article.source_name}
-              news_url={node.article.news_url}
-              text={node.article.text}
-              image_url={node.article.image_url}
-              key={i}
-            />
-          )
-        })}
+        <div class="card">
+          <img class="card-img-top" src="https://undervaluedequity.com/wp-content/uploads/2018/05/free-charts.jpg" alt="Card image cap"></img>
+          <div class="card-body">
+            <Link className="nav-link" to="/stocklanding">
+              <h5 class="card-title">Stocks</h5>
+              <p class="card-text">Click here to look through all stocks that we have available on our site featuring all S&P 500 stocks.</p>
+            </Link>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img-top" src="https://static9.depositphotos.com/1011646/1236/i/450/depositphotos_12369509-stock-photo-breaking-news-screen.jpg" height="300" alt="Card image cap"></img>
+          <div class="card-body">
+            <Link className="nav-link" to="/newslanding">
+              <h5 class="card-title">News</h5>
+              <p class="card-text">Click here to get the latest news on S&P 500 stocks. Stay informed on what is going on with all the top stocks!</p>
+            </Link>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img-top" src="https://www.rockwellautomation.com/resources/images/rockwellautomation/publication/Chemical-Plant-Production-shutterstock_355435700--photograph_848w477h.jpg" height="300" alt="Card image cap"></img>
+          <div class="card-body">
+            <Link className="nav-link" to="/industrylanding">
+              <h5 class="card-title">Industries</h5>
+              <p class="card-text">Click here to learn about what industries are trending upwards and what stocks are trending downhill.</p>
+            </Link>
+          </div>
+        </div>
       </div>
     </>
   )
