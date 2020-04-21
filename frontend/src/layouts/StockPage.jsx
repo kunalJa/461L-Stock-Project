@@ -29,7 +29,7 @@ export default function StockPage({ data }) {
   return (
     <>
       <Navbar />
-      <div style={{ width: "100%", alignIitems: "center", justifyContent: "center" }} className="d-flex flex-direction-row center mb-5">
+      <div style={{ width: "100%", alignItems: "center", justifyContent: "center" }} className="d-flex flex-direction-row center mb-5">
         <div className="">
           <h2 style={{ marginLeft: 45, marginTop: 15, fontWeight: 'bold' }}>
             Symbol: {stock.symbol}
