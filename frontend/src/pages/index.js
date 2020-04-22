@@ -5,6 +5,8 @@ import { Link } from "gatsby"
 import Navbar from "../components/Navbar"
 import Card from "../components/Card"
 
+import './style.css'
+
 const IndexPage = ({ data }) => {
   const news = data.allMongodbStockInformationNews.edges
   return (
