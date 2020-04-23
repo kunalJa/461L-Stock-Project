@@ -8,6 +8,7 @@ const Industrylanding = ({ data }) => {
   const industries = data.allMongodbStockInformationIndustry.edges
   const [page, setPage] = useState(0)
   const perPage = 6
+  const numPages = Math.ceil(industries.length / perPage)
 
   return (
     <>
@@ -24,7 +25,7 @@ const Industrylanding = ({ data }) => {
               title={node.name}
               source_name={`Stocks included: ${node.stocks.toString()}`}
               news_url={`/industry/${node.name.split(" ").join("")}`}
-              text={``}
+              text={`Percent Change: $${node.percentChange}`}
               image_url={node.industry.data[32].image_url}
               internal
               key={i}
@@ -35,7 +36,7 @@ const Industrylanding = ({ data }) => {
 
       <nav aria-label="Page navigation" className="d-flex justify-content-center mt-3">
         <ul className="pagination">
-          <li className="page-item">
+          {page !== 0 && <li className="page-item">
             <button
               className="page-link"
               onClick={
@@ -44,11 +45,11 @@ const Industrylanding = ({ data }) => {
             >
               Previous
             </button>
-          </li>
+          </li>}
           <li className="page-item">
-            <p className="page-link">{page}</p>
+            <p className="page-link">{page + 1} of {numPages}</p>
           </li>
-          <li className="page-item">
+          {page !== numPages - 1 && <li className="page-item">
             <button
               className="page-link"
               onClick={
@@ -57,7 +58,7 @@ const Industrylanding = ({ data }) => {
             >
               Next
             </button>
-          </li>
+          </li>}
         </ul>
       </nav>
     </>
@@ -73,7 +74,9 @@ export const industryData = graphql`
         node {
           name
           stocks
+          percentChange
           industry {
+            
             data {
               image_url
             }
