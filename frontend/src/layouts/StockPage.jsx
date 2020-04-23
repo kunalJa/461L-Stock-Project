@@ -83,7 +83,7 @@ export const pageQuery = graphql`
       symbol
       sector
       latestPrice
-      industry
+      industry 
       latestVolume
       percentChange
       historical {
