@@ -5,9 +5,19 @@ import { Link } from "gatsby"
 import Navbar from "../components/Navbar"
 import Card from "../components/Card"
 
+import useScript from "../hooks/useScript"
+
 import './style.css'
 
+	
+
+
 const IndexPage = ({ data }) => {
+	
+	useScript("https://code.jquery.com/jquery-3.2.1.slim.min.js");
+	useScript("https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js");
+	useScript("https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js");
+	
   const news = data.allMongodbStockInformationNews.edges
   return (
     <>
@@ -30,11 +40,11 @@ const IndexPage = ({ data }) => {
           to see information about each stock, industry, or related news!
         </h1>
       </div>
-      <h2 class="home" style={{ marginTop: 45, marginLeft: 15, fontWeight: 'bold' }}>
+      <h2 class="home" style={{ marginTop: 45, marginLeft: 15, fontWeight: 'bold', textAlign: 'center'}}>
         Check out our Content!
       </h2>
 	  
-	  <div id="carousel" class="carousel slide" data-ride="carousel" style={{ paddingLeft: 150, paddingRight: 150,}}>
+	  <div id="carousel" class="carousel slide" data-ride="carousel" data-interval="1000" style={{ paddingLeft: 450, paddingRight: 450,}}>
 	  <ol class="carousel-indicators">
 		<li data-target="#carousel" data-slide-to="0" class="active"></li>
 		<li data-target="#carousel" data-slide-to="1"></li>
@@ -43,7 +53,7 @@ const IndexPage = ({ data }) => {
 	  <div class="carousel-inner">
 		<div class="carousel-item active">
 		  <div class="card text-white bg-dark mb-3">
-			  <img class="card-img-top" src="https://undervaluedequity.com/wp-content/uploads/2018/05/free-charts.jpg" alt="Card image cap"></img>
+			  <img class="card-img-top" src="https://undervaluedequity.com/wp-content/uploads/2018/05/free-charts.jpg" height="300" width="300" alt="Card image cap" ></img>
 			  <div class="card-body">
 				<Link className="nav-link" to="/stocklanding">
 				  <h5 class="card-title">Stocks</h5>
@@ -54,7 +64,7 @@ const IndexPage = ({ data }) => {
 		</div>
 		<div class="carousel-item">
 		  <div class="card text-white bg-dark mb-3">
-			  <img class="card-img-top" src="https://static9.depositphotos.com/1011646/1236/i/450/depositphotos_12369509-stock-photo-breaking-news-screen.jpg" height="300" alt="Card image cap"></img>
+			  <img class="card-img-top" src="https://static9.depositphotos.com/1011646/1236/i/450/depositphotos_12369509-stock-photo-breaking-news-screen.jpg" height="300" width="300" alt="Card image cap"></img>
 			  <div class="card-body">
 				<Link className="nav-link" to="/newslanding">
 				  <h5 class="card-title">News</h5>
@@ -65,7 +75,7 @@ const IndexPage = ({ data }) => {
 		</div>
 		<div class="carousel-item">
 		  <div class="card text-white bg-dark mb-3">
-			  <img class="card-img-top" src="https://www.rockwellautomation.com/resources/images/rockwellautomation/publication/Chemical-Plant-Production-shutterstock_355435700--photograph_848w477h.jpg" height="300" alt="Card image cap"></img>
+			  <img class="card-img-top" src="https://www.rockwellautomation.com/resources/images/rockwellautomation/publication/Chemical-Plant-Production-shutterstock_355435700--photograph_848w477h.jpg" height="300" width="300" alt="Card image cap"></img>
 			  <div class="card-body">
 				<Link className="nav-link" to="/industrylanding">
 				  <h5 class="card-title">Industries</h5>
@@ -84,11 +94,6 @@ const IndexPage = ({ data }) => {
 		<span class="sr-only">Next</span>
 	  </a>
 	  </div>
-	  
-	  <script>
-
-	  </script>
-      
 	  
     </>
   )
