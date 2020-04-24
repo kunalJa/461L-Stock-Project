@@ -6,7 +6,7 @@ export default function Card({ title, text, source_name, news_url, image_url, in
   let percentChangeColor = "red", percentChangeSign = "↓";
   if (percentChange > 0) { percentChangeColor = "green"; percentChangeSign = "↑"; }
   return (
-    <div className="card text-white bg-primary mb-3">
+    <div className="card text-white bg-dark mb-3">
       <div className="card-body">
         <div className="d-flex w-100">
           {image_url !== "" && <img style={style} className="rounded mx-auto d-block mb-3" src={image_url} alt="" />}
