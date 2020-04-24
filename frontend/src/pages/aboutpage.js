@@ -246,7 +246,7 @@ const Aboutpage = () => {
 const PersonCard = ({ avatar, name, bio, major, responsibilities, commitCount, issues }) => (
   <div className="card">
     <img className="card-img-top" src={avatar} alt="Card image cap"></img>
-    <div className="card-body" style="color:black">
+    <div className="card-body">
       <h5 className="card-title">{name}</h5>
       <p className="card-text">{bio}</p>
       <p>{major}</p>
