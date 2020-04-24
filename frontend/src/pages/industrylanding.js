@@ -111,7 +111,7 @@ const Industrylanding = ({ data }) => {
               title={node.name}
               source_name={`Stocks included: ${node.stocks.join(", ")}`}
               news_url={`/industry/${node.name.split(" ").join("")}`}
-              text={``}
+              text={`Percent Change: $${node.percentChange}`}
               image_url={node.industry.data[32].image_url}
               internal
               key={i}
@@ -160,7 +160,9 @@ export const industryData = graphql`
         node {
           name
           stocks
+          percentChange
           industry {
+            
             data {
               image_url
             }

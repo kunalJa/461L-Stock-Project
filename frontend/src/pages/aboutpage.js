@@ -244,7 +244,7 @@ const Aboutpage = () => {
 }
 
 const PersonCard = ({ avatar, name, bio, major, responsibilities, commitCount, issues }) => (
-  <div className="card">
+  <div className="card text-white bg-dark mb-3">
     <img className="card-img-top" src={avatar} alt="Card image cap"></img>
     <div className="card-body">
       <h5 className="card-title">{name}</h5>
@@ -252,7 +252,7 @@ const PersonCard = ({ avatar, name, bio, major, responsibilities, commitCount, i
       <p>{major}</p>
       <p>{responsibilities}</p>
       <p>Commits: {commitCount}</p>
-      <p>Issues: {issues}</p>
+      <p>Open/Closed Issues: {issues}</p>
     </div>
     <div className="card-footer">
       <small className="text-muted"></small>
