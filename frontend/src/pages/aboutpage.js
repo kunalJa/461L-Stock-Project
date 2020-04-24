@@ -252,7 +252,7 @@ const PersonCard = ({ avatar, name, bio, major, responsibilities, commitCount, i
       <p>{major}</p>
       <p>{responsibilities}</p>
       <p>Commits: {commitCount}</p>
-      <p>Issues: {issues}</p>
+      <p>Open/Closed Issues: {issues}</p>
     </div>
     <div className="card-footer">
       <small className="text-muted"></small>
