@@ -6,18 +6,73 @@ import Card from "../components/Card"
 
 const Stocklanding = ({ data }) => {
   const stocks = data.allMongodbStockInformationInformation.edges
-  const [page, setPage] = useState(0)
   const [displayableItems, setDisplayableItems] = useState(stocks)
+
+  const [searchTerm, setSearchTerm] = useState("")
+  const [sortFunc, setSortFunc] = useState(0)
+  const [lowRange, setLowRange] = useState(0)
+  const [highRange, setHighRange] = useState(Number.MAX_SAFE_INTEGER)
+
+  const [page, setPage] = useState(0)
   const perPage = 6
   const numPages = Math.ceil(displayableItems.length / perPage)
 
-  const searchFunction = e => {
-    if (e.target.value !== "") {
-      setDisplayableItems(stocks.filter(item => item.node.name.toLowerCase().includes(e.target.value.toLowerCase()) || item.node.symbol.toLowerCase().includes(e.target.value.toLowerCase())))
-      setPage(0)
-    } else {
-      setDisplayableItems(stocks);
+  const highToLow = (a, b) => b.node.latestPrice - a.node.latestPrice
+  const lowToHigh = (a, b) => a.node.latestPrice - b.node.latestPrice
+  const alphabetical = (a, b) => a.node.symbol.localeCompare(b.node.symbol)
+
+  function whichSort() {
+    let variableFunc
+    switch (sortFunc) {
+      case 0:
+        variableFunc = highToLow
+        break;
+      case 1:
+        variableFunc = lowToHigh
+        break;
+      default:
+        variableFunc = alphabetical
     }
+    return variableFunc
+  }
+
+  function searchChange(e) {
+    setSearchTerm(e.target.value)
+  }
+
+  function searchSubmit(e) {
+    if (e.key === "Enter") {
+      if (searchTerm !== "") {
+        let sortedArray = [...stocks]
+          .filter(item => item.node.name.toLowerCase().includes(searchTerm.toLowerCase()) || item.node.symbol.toLowerCase().includes(searchTerm.toLowerCase()))
+          .filter(item => item.node.latestPrice >= lowRange && item.node.latestPrice < highRange)
+          .sort(whichSort())
+        setDisplayableItems(sortedArray)
+      } else {
+        let filteredList = [...stocks]
+          .filter(item => item.node.latestPrice >= lowRange && item.node.latestPrice < highRange)
+          .sort(whichSort())
+        setDisplayableItems(filteredList)
+      }
+      setPage(0)
+    }
+  }
+
+  function formSubmit(e) {
+    if (searchTerm !== "") {
+      let sortedArray = [...stocks]
+        .filter(item => item.node.name.toLowerCase().includes(searchTerm.toLowerCase()) || item.node.symbol.toLowerCase().includes(searchTerm.toLowerCase()))
+        .filter(item => item.node.latestPrice >= lowRange && item.node.latestPrice < highRange)
+        .sort(whichSort())
+      setDisplayableItems(sortedArray)
+    } else {
+      let filteredList = [...stocks]
+        .filter(item => item.node.latestPrice >= lowRange && item.node.latestPrice < highRange)
+        .sort(whichSort())
+      setDisplayableItems(filteredList)
+    }
+    setPage(0)
+    e.preventDefault()
   }
 
   let min = 1000000;
@@ -44,9 +99,64 @@ const Stocklanding = ({ data }) => {
           Top Stocks: Click on a stock for more info!
         </h2>
       </div>
-      <div className="md-form m-3">
-        <input className="form-control" type="text" onChange={searchFunction} placeholder="Search by name or symbol" aria-label="Search" />
-      </div>
+      <nav className="m-3">
+        <div className="md-form">
+          <input className="form-control" type="text" onKeyDown={searchSubmit} onChange={searchChange} value={searchTerm} aria-label="Search" />
+        </div>
+        <form className="my-3" onSubmit={formSubmit}>
+          <div className="mr-2 d-inline-block">
+            <p className="d-inline-block mr-2">Sort by:</p>
+            <div className="form-check form-check-inline">
+              <label className="form-check-label">
+                <input className="form-check-input" type="radio" name="inlineRadioOptions" value="option1" checked={sortFunc === 0} onChange={() => {
+                  if (sortFunc !== 0) {
+                    setSortFunc(0)
+                  }
+                }} />
+            highest price</label>
+            </div>
+            <div className="form-check form-check-inline">
+              <label className="form-check-label">
+                <input className="form-check-input" type="radio" name="inlineRadioOptions" value="option2" checked={sortFunc === 1} onChange={() => {
+                  if (sortFunc !== 1) {
+                    setSortFunc(1)
+                  }
+                }} />
+            lowest price</label>
+            </div>
+            <div className="form-check form-check-inline">
+              <label className="form-check-label">
+                <input className="form-check-input" type="radio" name="inlineRadioOptions" value="option3" checked={sortFunc === 2} onChange={() => {
+                  if (sortFunc !== 2) {
+                    setSortFunc(2)
+                  }
+                }} />
+            alphabetical symbol</label>
+            </div>
+          </div>
+          <div className="d-inline-block">
+            <div className="mr-2 d-flex flex-row align-items-center">
+              <span className="mr-2">Filter by price range:</span>
+              <input className="form-control w-25" type="text" value={lowRange} onChange={(e) => {
+                if (e.target.value === "") {
+                  setLowRange(0)
+                } else {
+                  setLowRange(e.target.value)
+                }
+              }} />
+              <span className="mx-2">to</span>
+              <input className="form-control w-25 mr-3" type="text" value={highRange} onChange={(e) => {
+                if (e.target.value === "") {
+                  setHighRange(Number.MAX_SAFE_INTEGER)
+                } else {
+                  setHighRange(e.target.value)
+                }
+              }} />
+              <input className="btn btn-outline-success" type="submit" value="Submit" />
+            </div>
+          </div>
+        </form>
+      </nav>
       <div className="card-columns" style={{ paddingLeft: 15, paddingRight: 15 }}>
         {displayableItems.slice(page * perPage, (page + 1) * perPage).map(({ node }, i) => {
           return (
@@ -107,9 +217,9 @@ export default Stocklanding
 
 export const stockData = graphql`
   query allStocks {
-    allMongodbStockInformationInformation(sort: { fields: [latestPrice], order: DESC }) {
-      edges {
-        node {
+          allMongodbStockInformationInformation(sort: {fields: [latestPrice], order: DESC }) {
+          edges {
+          node {
           image
           symbol
           name
