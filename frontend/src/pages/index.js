@@ -37,7 +37,7 @@ const IndexPage = ({ data }) => {
         className="card-deck"
         style={{ paddingLeft: 15, paddingRight: 15, }}
       >
-        <div class="card">
+        <div class="card text-white bg-dark mb-3">
           <img class="card-img-top" src="https://undervaluedequity.com/wp-content/uploads/2018/05/free-charts.jpg" alt="Card image cap"></img>
           <div class="card-body">
             <Link className="nav-link" to="/stocklanding">
@@ -46,7 +46,7 @@ const IndexPage = ({ data }) => {
             </Link>
           </div>
         </div>
-        <div class="card">
+        <div class="card text-white bg-dark mb-3">
           <img class="card-img-top" src="https://static9.depositphotos.com/1011646/1236/i/450/depositphotos_12369509-stock-photo-breaking-news-screen.jpg" height="300" alt="Card image cap"></img>
           <div class="card-body">
             <Link className="nav-link" to="/newslanding">
@@ -55,7 +55,7 @@ const IndexPage = ({ data }) => {
             </Link>
           </div>
         </div>
-        <div class="card">
+        <div class="card text-white bg-dark mb-3">
           <img class="card-img-top" src="https://www.rockwellautomation.com/resources/images/rockwellautomation/publication/Chemical-Plant-Production-shutterstock_355435700--photograph_848w477h.jpg" height="300" alt="Card image cap"></img>
           <div class="card-body">
             <Link className="nav-link" to="/industrylanding">
