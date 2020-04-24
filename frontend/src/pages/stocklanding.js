@@ -20,6 +20,22 @@ const Stocklanding = ({ data }) => {
     }
   }
 
+  let min = 1000000;
+  let max = -1000000;
+  var bestStockName;
+  var worstStockName;
+  for (let i = 0; i < 500; i++) {
+    if (stocks[i].node.percentChange > max) {
+      max = stocks[i].node.percentChange
+      bestStockName = stocks[i].node.name
+    }
+    if (stocks[i].node.percentChange < min) {
+      min = stocks[i].node.percentChange
+      worstStockName = stocks[i].node.name
+    }
+  }
+
+  console.log(max, min);
   return (
     <>
       <Navbar />
@@ -77,6 +93,12 @@ const Stocklanding = ({ data }) => {
         </ul>
       </nav>}
       {numPages === 0 && <h1 className="m-3">No results found</h1>}
+      <h2 className="home" style={{ marginTop: 15, marginLeft: 15, fontWeight: 'bold' }}>
+          Best performing stock of today was {bestStockName} with an increase of {max}%
+      </h2>
+      <h2 className="home" style={{ marginTop: 15, marginLeft: 15, fontWeight: 'bold' }}>
+          Worst performing stock of today was {worstStockName} with a decrease of {min}%
+      </h2>
     </>
   )
 }
