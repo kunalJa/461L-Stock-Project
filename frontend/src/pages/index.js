@@ -1,11 +1,12 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { Link } from "gatsby"
-
 import Navbar from "../components/Navbar"
 import Card from "../components/Card"
 
 import useScript from "../hooks/useScript"
+
+import Carousel from 'nuka-carousel';
 
 import './style.css'
 
@@ -14,16 +15,16 @@ import './style.css'
 
 const IndexPage = ({ data }) => {
 	
-	useScript("https://code.jquery.com/jquery-3.2.1.slim.min.js");
-	useScript("https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js");
-	useScript("https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js");
+	//useScript("https://code.jquery.com/jquery-3.2.1.slim.min.js");
+	//useScript("https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js");
+	//useScript("https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js");
 	
   const news = data.allMongodbStockInformationNews.edges
   return (
     <>
       <Navbar />
       <div>
-        <h1 class="home" style={{ marginLeft: 15, marginTop: 15, marginBottom: 15, fontWeight: 'bold' }}>
+        <h1 className="home" style={{ marginLeft: 15, marginTop: 15, marginBottom: 15, fontWeight: 'bold' }}>
           Plumbing & Co. Finance
         </h1>
       </div>
@@ -40,59 +41,23 @@ const IndexPage = ({ data }) => {
           to see information about each stock, industry, or related news!
         </h1>
       </div>
-      <h2 class="home" style={{ marginTop: 45, marginLeft: 15, fontWeight: 'bold', textAlign: 'center'}}>
+      <h2 className="home" style={{ marginTop: 45, marginLeft: 15, fontWeight: 'bold', textAlign: 'center'}}>
         Check out our Content!
       </h2>
 	  
-	  <div id="carousel" class="carousel slide" data-ride="carousel" data-interval="1000" style={{ paddingLeft: 450, paddingRight: 450,}}>
-	  <ol class="carousel-indicators">
-		<li data-target="#carousel" data-slide-to="0" class="active"></li>
-		<li data-target="#carousel" data-slide-to="1"></li>
-		<li data-target="#carousel" data-slide-to="2"></li>
-	  </ol>
-	  <div class="carousel-inner">
-		<div class="carousel-item active">
-		  <div class="card text-white bg-dark mb-3">
-			  <img class="card-img-top" src="https://undervaluedequity.com/wp-content/uploads/2018/05/free-charts.jpg" height="300" width="300" alt="Card image cap" ></img>
-			  <div class="card-body">
-				<Link className="nav-link" to="/stocklanding">
-				  <h5 class="card-title">Stocks</h5>
-				  <p class="card-text">Click here to look through all stocks that we have available on our site featuring all S&P 500 stocks.</p>
-				</Link>
-			  </div>
-			</div>
-		</div>
-		<div class="carousel-item">
-		  <div class="card text-white bg-dark mb-3">
-			  <img class="card-img-top" src="https://static9.depositphotos.com/1011646/1236/i/450/depositphotos_12369509-stock-photo-breaking-news-screen.jpg" height="300" width="300" alt="Card image cap"></img>
-			  <div class="card-body">
-				<Link className="nav-link" to="/newslanding">
-				  <h5 class="card-title">News</h5>
-				  <p class="card-text">Click here to get the latest news on S&P 500 stocks. Stay informed on what is going on with all the top stocks!</p>
-				</Link>
-			  </div>
-			</div>
-		</div>
-		<div class="carousel-item">
-		  <div class="card text-white bg-dark mb-3">
-			  <img class="card-img-top" src="https://www.rockwellautomation.com/resources/images/rockwellautomation/publication/Chemical-Plant-Production-shutterstock_355435700--photograph_848w477h.jpg" height="300" width="300" alt="Card image cap"></img>
-			  <div class="card-body">
-				<Link className="nav-link" to="/industrylanding">
-				  <h5 class="card-title">Industries</h5>
-				  <p class="card-text">Click here to learn about what industries are trending upwards and what stocks are trending downhill.</p>
-				</Link>
-			  </div>
-			</div>
-		</div>
-	  </div>
-	  <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-		<span class="sr-only">Previous</span>
-	  </a>
-	  <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
-		<span class="carousel-control-next-icon" aria-hidden="true"></span>
-		<span class="sr-only">Next</span>
-	  </a>
+	  <div style={{ paddingLeft: 400, paddingRight: 400, marginBottom: 200 }}>
+		<Carousel width="500px" enableKeyboardControls={true} wrapAround={true} heightMode="first" autoplay={true} autoplayInterval={2000}
+			defaultControlsConfig={{
+				nextButtonText: 'Next',
+				prevButtonText: 'Back',
+				pagingDotsStyle: {
+				  fill: 'red'
+				}
+			  }}> 
+			<img src="https://undervaluedequity.com/wp-content/uploads/2018/05/free-charts.jpg" />
+			<img src="https://static9.depositphotos.com/1011646/1236/i/450/depositphotos_12369509-stock-photo-breaking-news-screen.jpg" />
+			<img src="https://www.rockwellautomation.com/resources/images/rockwellautomation/publication/Chemical-Plant-Production-shutterstock_355435700--photograph_848w477h.jpg" />
+		</Carousel>
 	  </div>
 	  
     </>
