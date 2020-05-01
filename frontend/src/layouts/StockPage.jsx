@@ -1,5 +1,4 @@
 import React from "react"
-import { graphql } from "gatsby"
 import { LineChart } from "react-chartkick"
 import "chart.js"
 
@@ -7,10 +6,8 @@ import Navbar from "../components/Navbar"
 import ExportCSV from "../components/ExportCSV"
 import Card from "../components/Card"
 
-export default function StockPage({ data }) {
-  const stock = data.mongodbStockInformationInformation
-  const industry = data.mongodbStockInformationIndustry
-  console.log(industry.name);
+export default function StockPage({ pageContext }) {
+  const stock = JSON.parse(pageContext.stock)
   const historicData = {}
   const weeksData = {}
   const csvData = []
@@ -47,7 +44,7 @@ export default function StockPage({ data }) {
           <h4 style={{ marginLeft: 45 }}>Volume: {stock.latestVolume}</h4>
           <h4 style={{ marginLeft: 45 }}>Industry: {stock.industry}</h4>
           <h4 style={{ marginLeft: 45 }}>Our Perspective: {personalRating > 0 ? "The stock is going to rise" : "The stock is going to fall"}</h4>
-       </div>
+        </div>
         <div className="">
           <img style={{ width: "120px", marginLeft: "100px" }} className="rounded my-5" src={stock.image} alt="" />
         </div>
@@ -61,9 +58,13 @@ export default function StockPage({ data }) {
           buttonText={`Download ${stock.name}'s historical data as a CSV file`}
         />
       </div>
-      <LineChart data={historicData} min={null} curve={false} />
+      <div className="bg-light">
+        <LineChart data={historicData} min={null} curve={false} />
+      </div>
       <h2 style={{ marginLeft: 45, marginTop: 45, fontWeight: 'bold' }}>Recent Changes (2020)</h2>
-      <LineChart data={weeksData} min={null} curve={false} />
+      <div className="bg-light">
+        <LineChart data={weeksData} min={null} curve={false} />
+      </div>
       <h2 style={{ marginLeft: 45, marginTop: 50, fontWeight: 'bold' }}>Weekly High: {high}</h2>
       <h2 style={{ marginLeft: 45, marginTop: 50, fontWeight: 'bold' }}>Weekly Low: {low}</h2>
       <h2 style={{ marginLeft: 45, marginTop: 50, fontWeight: 'bold' }}>Recent News:</h2>
@@ -84,34 +85,3 @@ export default function StockPage({ data }) {
     </>
   )
 }
-
-export const pageQuery = graphql`
-  query StockQuery($id: String!) {
-    mongodbStockInformationInformation(id: { eq: $id }) {
-      name
-      image
-      symbol
-      sector
-      latestPrice
-      industry 
-      latestVolume
-      percentChange
-      historical {
-        dates
-        prices
-      }
-      news {
-        data {
-          source_name
-          news_url
-          image_url
-          text
-          title
-        }
-      }
-    }
-    mongodbStockInformationIndustry {
-      name
-    }
-  }
-`

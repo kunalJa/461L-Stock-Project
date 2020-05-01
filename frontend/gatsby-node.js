@@ -8,8 +8,28 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       allMongodbStockInformationInformation {
         edges {
           node {
-            symbol
             id
+            name
+            image
+            symbol
+            sector
+            latestPrice
+            industry
+            latestVolume
+            percentChange
+            historical {
+              dates
+              prices
+            }
+            news {
+              data {
+                source_name
+                news_url
+                image_url
+                text
+                title
+              }
+            }
           }
         }
       }
@@ -21,24 +41,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       allMongodbStockInformationIndustry {
         edges {
           node {
+            stocks
             name
-            id
-          }
-        }
-      }
-    }
-  `)
-
-  const newsTeslaResult = await graphql(`
-    query teslaNews {
-      allMongodbStockInformationNews(
-        filter: { company: { eq: "Tesla Inc." } }
-        limit: 3
-      ) {
-        edges {
-          node {
-            article {
-              title
+            percentChange
+            industry {
+              data {
+                image_url
+                news_url
+                sentiment
+                source_name
+                text
+                title
+              }
             }
           }
         }
@@ -46,47 +60,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     }
   `)
 
-  const newsAppleResult = await graphql(`
-    query appleNews {
-      allMongodbStockInformationNews(
-        filter: { company: { eq: "Apple Inc." } }
-        limit: 3
-      ) {
-        edges {
-          node {
-            article {
-              title
-            }
-          }
-        }
-      }
-    }
-  `)
-
-  const newsUALResult = await graphql(`
-    query ualNews {
-      allMongodbStockInformationNews(
-        filter: { company: { eq: "United Continental Holdings" } }
-        limit: 3
-      ) {
-        edges {
-          node {
-            article {
-              title
-            }
-          }
-        }
-      }
-    }
-  `)
-
-  if (
-    stockResult.errors ||
-    industryResult.errors ||
-    newsTeslaResult.errors ||
-    newsAppleResult.errors ||
-    newsUALResult.errors
-  ) {
+  if (stockResult.errors || industryResult.errors) {
     reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query')
   }
 
@@ -96,8 +70,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         path: `/stock/${node.symbol}`,
         component: path.resolve(`./src/layouts/StockPage.jsx`),
         context: {
-          slug: `/stock/${node.symbol}`,
-          id: `${node.id}`,
+          stock: JSON.stringify(node),
         },
       })
     }
@@ -109,8 +82,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         path: `/industry/${node.name.split(" ").join("")}`,
         component: path.resolve(`./src/layouts/IndustryPage.jsx`),
         context: {
-          slug: `/industry/${node.name.split(" ").join("")}`,
-          id: `${node.id}`,
+          industry: JSON.stringify(node),
         },
       })
     }
