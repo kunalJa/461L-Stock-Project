@@ -111,7 +111,7 @@ const Industrylanding = ({ data }) => {
               title={node.name}
               source_name={`Stocks included: ${node.stocks.join(", ")}`}
               news_url={`/industry/${node.name.split(" ").join("")}`}
-              text={`Percent Change: $${node.percentChange}`}
+              text={`Percent Change: ${node.percentChange}%`}
               image_url={node.industry.data[32].image_url}
               internal
               key={i}

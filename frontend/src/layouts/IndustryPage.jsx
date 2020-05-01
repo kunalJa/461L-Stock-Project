@@ -7,21 +7,22 @@ import { node } from "prop-types"
 
 export default function IndustryPage({ data }) {
   const industry = data.mongodbStockInformationIndustry
-  //const sentiment = industry.industry.data[3].sentiment
+  const sentiment = industry.industry.data[3].sentiment
   return (
     <>
       <Navbar />
       <h2 style={{ marginLeft: 15, marginTop: 15, fontWeight: 'bold'}}>
         Industry: {industry.name}
       </h2>
+
       {industry.percentChange > 1 && (
-        <div className="alert alert-primary">Industry is doing Positively!: {industry.percentChange}%</div>
+        <div className="alert alert-primary">Industry is doing Positively! : {industry.percentChange}%</div>
       )}
-      {industry.percentChange < 1 & industry.percentChange > -1 && (
-        <div className="alert alert-secondary">Industry is doing Neutral!: {industry.percentChange}%</div>
+      {industry.percentChange < 1 && industry.percentChange > -1 && (
+        <div className="alert alert-secondary">Industry is doing Neutral! : {industry.percentChange}%</div>
       )}
       {industry.percentChange < -1  && (
-        <div className="alert alert-danger">Industry is doing Negatively!: {industry.percentChange}%</div>
+        <div className="alert alert-danger">Industry is doing Negatively! : {industry.percentChange}%</div>
       )}
       
       <h3 className="mt-3" style={{marginLeft: 15}}>Stocks that are part of this industry</h3>
