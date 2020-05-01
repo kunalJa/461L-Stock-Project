@@ -1,99 +1,117 @@
 import React, { useEffect, useState } from "react"
 import Navbar from "../components/Navbar"
 
-const Aboutpage = () => {
-  const [info, setInfo] = useState({ content: {} });
-  useEffect(() => {
-    const xhr2 = new XMLHttpRequest();
+function getGitQuery(email, login) {
+  const t = JSON.stringify({
+    query: `
+      {
+        repository(owner: "kunalJa", name: "461L-Stock-Project") {
+          issues {
+            totalCount
+          }
+  
+          object(expression: "master") {
+            ... on Commit {
+              total: history {
+                totalCount
+              }
+              history (author : {emails: ["${email}"]} ) {
+                edges {
+                  node {
+                    messageHeadline
+                    oid
+                    message
+                    author {
+                        name
+                        email
+                        date
+                    }
+                  }
+                }
+                totalCount
+              }
+            }
+          }
+        }
+        user(login: "${login}") {
+          avatarUrl
+          bio
+          issues {
+            totalCount
+          }
+        }
+      }`
+  });
+  return t;
+}
+
+function getGitEmails() {
+  const t = JSON.stringify({
+    query: `
+      {
+        repository(owner: "kunalJa", name: "461L-Stock-Project") {
+          issues {
+            totalCount
+          }
+          collaborators {
+            nodes {
+              name
+              login
+              email
+            }
+            totalCount
+          }
+        }
+      }`
+  });
+  return t;
+}
+
+function sendGitRequest(email, login, info, setInfo) {
+  const xhr = new XMLHttpRequest();
+  xhr.addEventListener('load', function () {
+    const resp = JSON.parse(this.responseText);
+    info.content = {
+      ...info.content,
+      [email]: resp,
+      [login]: resp,
+    };
+    setInfo({
+      content: {
+        ...info.content,
+        [email]: resp,
+        [login]: resp,
+      }
+    });
+  });
+  xhr.open('POST', 'https://api.github.com/graphql');
+  xhr.setRequestHeader('Authorization', `bearer ${process.env.GATSBY_PERSONAL_ACCESS_TOKEN}`);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  let query = getGitQuery(email, login);
+  xhr.send(query);
+}
+
+function requestEmails(info, setInfo) {
+  const xhr2 = new XMLHttpRequest();
     xhr2.addEventListener('load', function () {
       const resp = JSON.parse(this.responseText);
       for (const node of resp.data.repository.collaborators.nodes) {
         const email = node.email
         const login = node.login
-        const xhr = new XMLHttpRequest();
-        xhr.addEventListener('load', function () {
-          const resp = JSON.parse(this.responseText);
-          info.content = {
-            ...info.content,
-            [email]: resp,
-            [login]: resp,
-          };
-          setInfo({
-            content: {
-              ...info.content,
-              [email]: resp,
-              [login]: resp,
-            }
-          });
-        });
-        xhr.open('POST', 'https://api.github.com/graphql');
-        xhr.setRequestHeader('Authorization', `bearer ${process.env.GATSBY_PERSONAL_ACCESS_TOKEN}`);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        const t = JSON.stringify({
-          query: `
-            {
-              repository(owner: "kunalJa", name: "461L-Stock-Project") {
-                issues {
-                  totalCount
-                }
-
-                object(expression: "master") {
-                  ... on Commit {
-                    total: history {
-                      totalCount
-                    }
-                    history (author : {emails: ["${email}"]} ) {
-                      edges {
-                        node {
-                          messageHeadline
-                          oid
-                          message
-                          author {
-                              name
-                              email
-                              date
-                          }
-                        }
-                      }
-                      totalCount
-                    }
-                  }
-                }
-              }
-              user(login: "${login}") {
-                avatarUrl
-                bio
-                issues {
-                  totalCount
-                }
-              }
-            }`
-        });
-        xhr.send(t);
+        sendGitRequest(email, login, info, setInfo);
       }
     });
     xhr2.open('POST', 'https://api.github.com/graphql');
     xhr2.setRequestHeader('Authorization', `bearer ${process.env.GATSBY_PERSONAL_ACCESS_TOKEN}`);
     xhr2.setRequestHeader('Content-Type', 'application/json');
-    const t = JSON.stringify({
-      query: `
-        {
-          repository(owner: "kunalJa", name: "461L-Stock-Project") {
-            issues {
-              totalCount
-            }
-            collaborators {
-              nodes {
-                name
-                login
-                email
-              }
-              totalCount
-            }
-          }
-        }`
-    });
-    xhr2.send(t);
+    let query = getGitEmails();
+    xhr2.send(query);
+}
+
+const Aboutpage = () => {
+  const [info, setInfo] = useState({ content: {} });
+  useEffect(() => {
+    requestEmails(info, setInfo);
   }, []);
 
   let commitCounts = null;
