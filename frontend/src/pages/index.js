@@ -15,9 +15,9 @@ import './style.css'
 
 const IndexPage = ({ data }) => {
 	
-	//useScript("https://code.jquery.com/jquery-3.2.1.slim.min.js");
-	//useScript("https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js");
-	//useScript("https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js");
+	useScript("https://code.jquery.com/jquery-3.2.1.slim.min.js");
+	useScript("https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js");
+	useScript("https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js");
 	
   const news = data.allMongodbStockInformationNews.edges
   return (
