@@ -4,7 +4,7 @@ import "chart.js"
 
 import Navbar from "../components/Navbar"
 import ExportCSV from "../components/ExportCSV"
-import Card from "../components/Card"
+import CardGrid from "../components/CardGrid"
 
 export default function StockPage({ pageContext }) {
   const stock = JSON.parse(pageContext.stock)
@@ -12,10 +12,12 @@ export default function StockPage({ pageContext }) {
   const weeksData = {}
   const csvData = []
   let personalRating = 0
-  var high = -1;
-  var low = 100000000;
+  let high = Number.MIN_SAFE_INTEGER;
+  let low = Number.MAX_SAFE_INTEGER;
+
   stock.historical[0].dates.forEach((key, i) => {
     historicData[key] = stock.historical[0].prices[i]
+
     if (i >= stock.historical[0].dates.length - 7) {
       weeksData[key] = stock.historical[0].prices[i]
       if (stock.historical[0].prices[i] < low)
@@ -24,6 +26,7 @@ export default function StockPage({ pageContext }) {
         high = stock.historical[0].prices[i]
       personalRating += (stock.historical[0].prices[i] - stock.historical[0].prices[i - 1])
     }
+
     csvData.push({
       symbol: stock.symbol,
       date: key,
@@ -68,19 +71,19 @@ export default function StockPage({ pageContext }) {
       <h2 style={{ marginLeft: 45, marginTop: 50, fontWeight: 'bold' }}>Weekly High: {high}</h2>
       <h2 style={{ marginLeft: 45, marginTop: 50, fontWeight: 'bold' }}>Weekly Low: {low}</h2>
       <h2 style={{ marginLeft: 45, marginTop: 50, fontWeight: 'bold' }}>Recent News:</h2>
-      <div className="card-deck" style={{ paddingLeft: 45, paddingRight: 45 }}>
-        {stock.news.data.slice(1, 3).map((article, i) => {
-          return (
-            <Card
-              title={article.title}
-              source_name={article.source_name}
-              news_url={article.news_url}
-              text={article.text}
-              image_url={article.image_url}
-              key={i}
-            />
-          )
-        })}
+      <div className="card-deck" style={{ paddingLeft: 15, paddingRight: 15 }}>
+        <CardGrid items={stock.news.data.slice(1, 3).map(
+          (article) => {
+            return {
+              title: article.title,
+              footer: article.source_name,
+              text: article.text,
+              link: article.news_url,
+              image_url: article.image_url,
+              percentChange: 0
+            }
+          }
+        )} interal_links={false} stock={false} percentChange={0} />
       </div>
     </>
   )

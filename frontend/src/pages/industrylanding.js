@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { graphql } from "gatsby"
 
 import Navbar from "../components/Navbar"
-import Card from "../components/Card"
+import CardGrid from "../components/CardGrid"
 
 const Industrylanding = ({ data }) => {
   const industries = data.allMongodbStockInformationIndustry.edges
@@ -105,45 +105,44 @@ const Industrylanding = ({ data }) => {
         </form>
       </nav>
       <div className="card-columns" style={{ paddingLeft: 15, paddingRight: 15 }}>
-        {displayableItems.slice(page * perPage, (page + 1) * perPage).map(({ node }, i) => {
-          return (
-            <Card
-              title={node.name}
-              source_name={`Stocks included: ${node.stocks.join(", ")}`}
-              news_url={`/industry/${node.name.split(" ").join("")}`}
-              text={`Percent Change: ${node.percentChange}%`}
-              image_url={node.industry.data[32].image_url}
-              internal
-              key={i}
-            />
-          )
-        })}
+        <CardGrid items={displayableItems.slice(page * perPage, (page + 1) * perPage).map(
+          ({ node }) => {
+            return {
+              title: node.name,
+              footer: `Stocks included: ${node.stocks.join(", ")}`,
+              text: `Percent Change: ${node.percentChange}%`,
+              link: `/industry/${node.name.split(" ").join("")}`,
+              image_url: node.industry.data[10].image_url,
+              percentChange: 0
+            }
+          }
+        )} interal_links={true} stock={false} />
       </div>
       {numPages > 0 && <nav aria-label="Page navigation" className="d-flex justify-content-center mt-3">
         <ul className="pagination">
           {page !== 0 && <li className="page-item">
             <button
               className="page-link"
-              onClick={
-                () => setPage(Math.max(page - 1, 0))
-              }
+              onClick={() => setPage(Math.max(page - 1, 0))}
             >
               Previous
             </button>
-          </li>}
+          </li>
+          }
+
           <li className="page-item">
             <p className="page-link">{page + 1} of {numPages}</p>
           </li>
+
           {page !== numPages - 1 && <li className="page-item">
             <button
               className="page-link"
-              onClick={
-                () => setPage(Math.min(page + 1, Math.ceil(displayableItems.length / perPage) - 1))
-              }
+              onClick={() => setPage(Math.min(page + 1, Math.ceil(displayableItems.length / perPage) - 1))}
             >
               Next
             </button>
-          </li>}
+          </li>
+          }
         </ul>
       </nav>}
       {numPages === 0 && <h1 className="m-3">No results found</h1>}
@@ -162,7 +161,7 @@ export const industryData = graphql`
           stocks
           percentChange
           industry {
-            
+
             data {
               image_url
             }

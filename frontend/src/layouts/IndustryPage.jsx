@@ -2,12 +2,11 @@ import React from "react"
 import { Link } from "gatsby"
 
 import Navbar from "../components/Navbar"
-import Card from "../components/Card"
-import { node } from "prop-types"
+import CardGrid from "../components/CardGrid"
 
 export default function IndustryPage({ pageContext }) {
   const industry = JSON.parse(pageContext.industry)
-  const sentiment = industry.industry.data[3].sentiment
+
   return (
     <>
       <Navbar />
@@ -37,18 +36,18 @@ export default function IndustryPage({ pageContext }) {
       </ul>
 
       <div className="card-deck" style={{ paddingLeft: 15, paddingRight: 15 }}>
-        {industry.industry.data.slice(1, 3).map((article, i) => {
-          return (
-            <Card
-              title={article.title}
-              source_name={article.source_name}
-              news_url={article.news_url}
-              text={article.text}
-              image_url={article.image_url}
-              key={i}
-            />
-          )
-        })}
+        <CardGrid items={industry.industry.data.slice(1, 3).map(
+          (article) => {
+            return {
+              title: article.title,
+              footer: article.source_name,
+              text: article.text,
+              link: article.news_url,
+              image_url: article.image_url,
+              percentChange: 0
+            }
+          }
+        )} interal_links={false} stock={false} percentChange={0} />
       </div>
     </>
   )
