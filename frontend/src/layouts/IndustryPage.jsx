@@ -1,17 +1,17 @@
 import React from "react"
-import { Link } from "gatsby"
+import { graphql, Link } from "gatsby"
 
 import Navbar from "../components/Navbar"
 import Card from "../components/Card"
 import { node } from "prop-types"
 
-export default function IndustryPage({ pageContext }) {
-  const industry = JSON.parse(pageContext.industry)
+export default function IndustryPage({ data }) {
+  const industry = data.mongodbStockInformationIndustry
   const sentiment = industry.industry.data[3].sentiment
   return (
     <>
       <Navbar />
-      <h2 style={{ marginLeft: 15, marginTop: 15, fontWeight: 'bold' }}>
+      <h2 style={{ marginLeft: 15, marginTop: 15, fontWeight: 'bold'}}>
         Industry: {industry.name}
       </h2>
 
@@ -21,11 +21,11 @@ export default function IndustryPage({ pageContext }) {
       {industry.percentChange < 1 && industry.percentChange > -1 && (
         <div className="alert alert-secondary">Industry is doing Neutral! : {industry.percentChange}%</div>
       )}
-      {industry.percentChange < -1 && (
+      {industry.percentChange < -1  && (
         <div className="alert alert-danger">Industry is doing Negatively! : {industry.percentChange}%</div>
       )}
-
-      <h3 className="mt-3" style={{ marginLeft: 15 }}>Stocks that are part of this industry</h3>
+      
+      <h3 className="mt-3" style={{marginLeft: 15}}>Stocks that are part of this industry</h3>
       <ul className="mb-5">
         {industry.stocks.map((stock, i) => {
           return (
@@ -53,3 +53,23 @@ export default function IndustryPage({ pageContext }) {
     </>
   )
 }
+
+export const pageQuery = graphql`
+  query IndustryQuery($id: String!) {
+    mongodbStockInformationIndustry(id: { eq: $id }) {
+      stocks
+      name
+      percentChange
+      industry {
+        data {
+          image_url
+          news_url
+          sentiment
+          source_name
+          text
+          title
+        }
+      }
+    }
+  }
+`
